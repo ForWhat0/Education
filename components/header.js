@@ -1,12 +1,12 @@
-import Link from 'next/link'
+import styled from 'styled-components'
 
-export default function Header() {
-  return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-      <Link href="/">
-        <a className="hover:underline">Blog</a>
-      </Link>
-      .
-    </h2>
-  )
-}
+
+
+export const globalHeaderDiv = styled.div`
+position: absolute;
+width: 1440px;
+height: 468px;
+left: 0px;
+top: 0px;
+@apply background:green;
+`

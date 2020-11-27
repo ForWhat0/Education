@@ -3,7 +3,7 @@ import Container from '../components/container'
 import MoreStories from '../components/more-stories'
 import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
-import Layout from '../components/layout'
+import {MainLayout} from '../components/MainLayout'
 import { getAllPostsForHome } from '../lib/api'
 import { CMS_NAME } from '../lib/constants'
 
@@ -13,7 +13,7 @@ export default function Index({ allPosts: { edges }, preview }) {
 
   return (
     <>
-      <Layout preview={preview}>
+      <MainLayout preview={preview}>
         <Head>
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
@@ -31,7 +31,7 @@ export default function Index({ allPosts: { edges }, preview }) {
           )}
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
         </Container>
-      </Layout>
+      </MainLayout>
     </>
   )
 }
