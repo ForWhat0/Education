@@ -1,4 +1,21 @@
-import {hideLoader, showLoader, showAlert, hideAlert,changeLanguage} from '../types/types'
+import {hideLoader, showLoader, showAlert, hideAlert, changeLanguage, getProjects} from '../types/types'
+import {getAllProjects} from "../../lib/api";
+
+export function actionGetProjects(
+    variables,
+    preview
+){
+    return async dispatch=>{
+        try{
+           const data = getAllProjects(variables,preview)
+            dispatch({type:getProjects,payload:data.data})
+        }
+        catch (e){
+            dispatch(ShowAlert(e.message,'error'))
+            dispatch(HideLoader)
+        }
+    }
+}
 
 export function ChangeLanguage(language){
     return dispatch=>{

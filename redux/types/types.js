@@ -1,4 +1,5 @@
 export const showLoader = 'APP/SHOW_LOADER'
+export const getProjects = 'PROJECTS/GET_PROJECTS'
 export const hideLoader = 'APP/HIDE_LOADER'
 export const showAlert = 'APP/SHOW_ALERT'
 export const hideAlert = 'APP/HIDE_ALERT'

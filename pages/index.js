@@ -1,44 +1,34 @@
 import Head from 'next/head'
-import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
 import {MainLayout} from '../components/MainLayout'
-import { getAllPostsForHome } from '../lib/api'
+import { getProjectsForHome } from '../lib/api'
 import { CMS_NAME } from '../lib/constants'
+import Projects from "../components/projects/projects"
+import {useSelector} from "react-redux";
+import LastNews from "../components/news/lastNews";
 
-export default function Index({ allPosts: { edges }, preview }) {
-  const heroPost = edges[0]?.node
-  const morePosts = edges.slice(1)
-
+export default function Index({ Projects: { edges }, preview }) {
+  const {language} = useSelector(state=>state.app)
   return (
     <>
       <MainLayout preview={preview}>
         <Head>
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
-        <Container>
-          <Intro />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.featuredImage?.node}
-              date={heroPost.date}
-              author={heroPost.author?.node}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-        </Container>
+          {
+            edges.length > 0 &&
+                <>
+                  <Projects posts={edges} language={language}/>
+                  <LastNews posts={edges} language={language}/>
+                </>
+          }
       </MainLayout>
     </>
   )
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allPosts = await getAllPostsForHome(preview)
+  const Projects = await getProjectsForHome(preview)
   return {
-    props: { allPosts, preview },
+    props: { Projects, preview },
   }
 }

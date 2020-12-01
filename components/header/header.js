@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import React from "react";
 import {HeaderWrapper,WrapperInner,Main,NavBar,Footer} from './headerStyledElements'
-import {StyledButton} from '../button'
+import {StyledButton} from '../button/button'
 import {headerLsi} from '../../Lsi/lsi'
 
-
+import Image from 'next/image'
+import {SelectDropBut} from "../selectDropBut";
 const {navButtons,register,logIn,title,subtitle,inputPlaceholder} = headerLsi
 
 export default function Header({language}) {
