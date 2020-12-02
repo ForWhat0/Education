@@ -5,7 +5,7 @@ import Projects from "../../components/projects/projects"
 import {useSelector,useDispatch} from "react-redux";
 import {actionGetProjects} from "../../redux/actions/actions";
 
-export default function Index({ Projects: { edges ,pageInfo}, preview }) {
+export default function ALLProjects({ Projects: { edges ,pageInfo}, preview }) {
     const {language} = useSelector(state=>state.app)
     const dispatch = useDispatch()
     const {projects} = useSelector(state=>state.projects)

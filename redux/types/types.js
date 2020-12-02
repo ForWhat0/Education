@@ -1,5 +1,6 @@
 export const showLoader = 'APP/SHOW_LOADER'
 export const getProjects = 'PROJECTS/GET_PROJECTS'
+export const getNews = 'NEWS/GET_NEWS'
 export const hideLoader = 'APP/HIDE_LOADER'
 export const showAlert = 'APP/SHOW_ALERT'
 export const hideAlert = 'APP/HIDE_ALERT'

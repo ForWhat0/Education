@@ -1,5 +1,5 @@
-import {hideLoader, showLoader, showAlert, hideAlert, changeLanguage, getProjects} from '../types/types'
-import {getAllProjects} from "../../lib/api";
+import {hideLoader, showLoader, showAlert, hideAlert, changeLanguage, getProjects, getNews} from '../types/types'
+import {getAllProjects, getNewsForHome} from "../../lib/api";
 
 export function actionGetProjects(
     variables,
@@ -13,6 +13,22 @@ export function actionGetProjects(
         catch (e){
             dispatch(ShowAlert(e.message,'error'))
             dispatch(HideLoader)
+        }
+    }
+}
+
+export function actionGetNews(
+    newsVariables
+){
+    return async dispatch=>{
+        try{
+            dispatch(ShowLoader())
+            const news = await getNewsForHome(newsVariables)
+            dispatch({type:getNews,payload:news})
+            dispatch(HideLoader())
+        }
+        catch (e){
+console.log(e.message)
         }
     }
 }
