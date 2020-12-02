@@ -1,18 +1,18 @@
 import {hideLoader, showLoader, showAlert, hideAlert, changeLanguage, getProjects, getNews} from '../types/types'
-import {getAllProjects, getNewsForHome} from "../../lib/api";
+import {getProjectsAPI, getNewsForHome} from "../../lib/api";
 
 export function actionGetProjects(
-    variables,
-    preview
+    projectVariables
 ){
     return async dispatch=>{
         try{
-           const data = getAllProjects(variables,preview)
-            dispatch({type:getProjects,payload:data.data})
+            dispatch(ShowLoader())
+           const projects = await getProjectsAPI(projectVariables)
+            dispatch({type:getProjects,payload:projects})
+            dispatch(HideLoader())
         }
         catch (e){
-            dispatch(ShowAlert(e.message,'error'))
-            dispatch(HideLoader)
+            console.log(e.message)
         }
     }
 }

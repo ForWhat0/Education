@@ -2,21 +2,16 @@ import {  getProjects } from "../types/types"
 
 
 const initialState={
-    projects:[],
-    variables:{
-        first: 10,
-        last: null,
-        after: null,
-        before: null
-    }
+    projectsReducer:null
 }
 
 export const projectReducer = ( state = initialState , action )=>{
     switch (action.type){
         case getProjects:{
+            console.log('here',action.payload)
             return {
                 ...state,
-                projects:action.payload
+                projectsReducer:action.payload
             }
         }
 

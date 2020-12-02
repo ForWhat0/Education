@@ -81,6 +81,11 @@ export const NewsLsi={
         eng:"Latest news",
         rus:"Последние новости"
     },
+    news:{
+        ukr:"Новини",
+        eng:"News",
+        rus:"Новости"
+    },
     review:{
         ukr:"Переглянути",
         eng:"Review",
@@ -90,5 +95,23 @@ export const NewsLsi={
         ukr:"Більше новин",
         eng:"More news",
         rus:"Другие новости"
+    },
+    search:{
+        ukr:"Пошук за датою ",
+        eng:"Search by date",
+        rus:"Search by date"
+    },
+}
+
+export const pagination={
+    prevPage:{
+        ukr:"Попередня сторінка",
+        eng:"Previous page",
+        rus:"Предыдущая страница"
+    },
+    nextPage:{
+        ukr:"Наступна сторінка",
+        eng:"Next page",
+        rus:"Следующая страница"
     }
 }

@@ -17,6 +17,7 @@ display:flex;
 justify-content:center;
 `
 export default function Projects({language,posts}){
+    console.log('I AM here ',posts)
     return(
         <section>
             <TitleContainer>

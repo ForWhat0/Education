@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import {StyledButton} from "../button/button";
 import {ChangeLanguageSelector} from './changeLanguageSelector'
+import {SearchBarStyled} from "../searchBar/searchBar";
 
 export const HeaderWrapper = styled.header`
     justify-content: flex-start;
@@ -126,36 +127,6 @@ export const Main =({logo1,logo2,title,subtitle})=>{
         </MainContent>
     )
 }
-const SearchBar = styled.span`
- position: relative;
- width:80%;
-`
-const Icon = styled.i`
-   position: absolute; 
-  top:15px;!important;
-  right: 20px; 
-  z-index: 1; 
-  font-size:20px;
-`
-const Input = styled.input.attrs(props => ({
-    type: "text",
-    name:props.name,
-    onChange:props.func,
-    placeholderTextColor: "red",
-    placeholder :props.inputPlaceholder,
-}))`
-&.hasFocus:focus
-font-family: 'Roboto', sans-serif;
-  color: #333;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  border-radius: 0.2rem;
-  border: 1 px solid green;
-  width: 100%;
-  background: #FFFFFF;
-border-radius: 28px;
-
-`;
 const FooterContainer = styled.div`
 display:flex;
 align-items: center;
@@ -197,10 +168,7 @@ export const Footer =({inputName,inputFunc,inputPlaceholder})=>{
                     src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1000px-Apple_logo_black.svg.png'/>
             </Logos>
 
-            <SearchBar>
-            <Icon className="fa fa-search" aria-hidden="true"/>
-            <Input name={inputName} func={inputFunc}  inputPlaceholder={inputPlaceholder}/>
-            </SearchBar>
+            <SearchBarStyled width='80%' inputFunc={inputFunc} name={inputName} inputPlaceholder={inputPlaceholder}/>
 
             <ChangeLanguageContainer>
                 <Logo
