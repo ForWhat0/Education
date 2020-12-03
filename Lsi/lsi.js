@@ -73,13 +73,23 @@ export const ProjectsLsi={
         ukr:"Всі проекти",
         eng:"All projects",
         rus:"Все проекты"
-    }
+    },
+    projects:{
+        ukr:"Проекти",
+        eng:"Projects",
+        rus:"Проекты"
+    },
 }
 export const NewsLsi={
     lastNews:{
         ukr:"Останні новини",
         eng:"Latest news",
         rus:"Последние новости"
+    },
+    otherNews:{
+        ukr:"Інші новини",
+        eng:"Other news",
+        rus:"Другие новости"
     },
     news:{
         ukr:"Новини",

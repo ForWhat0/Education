@@ -2,6 +2,7 @@ import {TitleForComponent} from "../titleForComponent/title";
 import Icon from "../icon/icon";
 import React from "react";
 import styled from "styled-components";
+import Date from "../date/date";
 
 
 const TextContent = styled.div`
@@ -22,7 +23,7 @@ const IconText = styled.div`
    font-weight:400;
    line-height:15px;  
 `
-const Date = styled.div`
+const StyledDate = styled.div`
    position:absolute;
    right:0;
 `
@@ -45,9 +46,9 @@ const StyledTextComponent =({title,excerpt,textForIcon ,date})=>{
                 </IconText>
                 {
                     date &&
-                <Date>
-                    {date.slice(0,10).split('-').reverse().join('.')}
-                </Date>
+                <StyledDate>
+                    <Date date={date}/>
+                </StyledDate>
                 }
             </Review>
             </>

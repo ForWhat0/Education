@@ -1,6 +1,7 @@
 import styled, {keyframes} from 'styled-components'
-import React from "react";
-import StyledTextComponent from "../textComponent/textComponent";
+import React from "react"
+import StyledTextComponent from "../textComponent/textComponent"
+import Link from "next/link"
 
 const opacity = keyframes`
  0%   { opacity: 0; }
@@ -39,6 +40,7 @@ const StyledPhoto = styled.img`
 
 export default function News(props) {
     return (
+        <Link href={`/news/[databaseId]`} as={`/news/${props.databaseId}`}>
     <NewsContainer>
         <PhotoContainer >
             <StyledPhoto
@@ -47,5 +49,6 @@ export default function News(props) {
         </PhotoContainer>
         <StyledTextComponent title={props.title} date={props.date} textForIcon={props.textForIcon}/>
     </NewsContainer>
+        </Link>
     )
 }

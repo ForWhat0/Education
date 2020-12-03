@@ -3,12 +3,18 @@ import Head from 'next/head'
 import {MainLayout} from '../components/MainLayout'
 import {getNewsForHome, getProjectsAPI} from '../lib/api'
 import { CMS_NAME } from '../lib/constants'
-import Projects from "../components/projects/projects"
-import {useSelector,useDispatch} from "react-redux";
-import LastNews from "../components/news/lastNews";
-import {actionGetNews, actionGetProjects} from "../redux/actions/actions";
-import StyledLoader from "../components/loader/loader";
-import styled from "styled-components";
+import {useSelector,useDispatch} from "react-redux"
+import LastNews from "../components/news/lastNews"
+import {actionGetNews, actionGetProjects} from "../redux/actions/actions"
+import StyledLoader from "../components/loader/loader"
+import styled from "styled-components"
+import ProjectsWrapper from "../components/projects/projectWrapper"
+import {NewsLsi, ProjectsLsi} from "../Lsi/lsi"
+
+
+const {popularProjectsTitle} = ProjectsLsi
+
+const {lastNews} = NewsLsi
 
 const FlexContainer = styled.div`
 display:flex;
@@ -22,7 +28,7 @@ export default function HOME({ initialProjects,initialNews, preview }) {
   const {language} = useSelector(state=>state.app)
   const {newsReducer} = useSelector(state=>state.news)
   const {projectsReducer} = useSelector(state=>state.projects)
-  console.log(projectsReducer)
+
   useEffect(() => {
     async function load_SPA_data() {
       const newsVariables = {
@@ -48,10 +54,10 @@ export default function HOME({ initialProjects,initialNews, preview }) {
 
   const  renderNews=()=>{
     if (initialNews && !newsReducer){
-      return <LastNews  posts={initialNews.edges}  pageInfo={initialNews.pageInfo} language={language}/>
+      return <LastNews  posts={initialNews.edges} title={lastNews[language]}  pageInfo={initialNews.pageInfo} language={language}/>
     }
     else if (newsReducer) {
-      return <LastNews  posts={newsReducer.edges} pageInfo={newsReducer.pageInfo} language={language}/>
+      return <LastNews  posts={newsReducer.edges} title={lastNews[language]} pageInfo={newsReducer.pageInfo} language={language}/>
     }
     else {
       return <FlexContainer justify='center'><StyledLoader/></FlexContainer>
@@ -59,10 +65,10 @@ export default function HOME({ initialProjects,initialNews, preview }) {
   }
   const  renderProjects=()=>{
     if (initialProjects && !projectsReducer){
-      return <Projects posts={initialProjects.edges} language={language}/>
+      return <ProjectsWrapper title={popularProjectsTitle[language]} posts={initialProjects.edges} language={language}/>
     }
     else if (projectsReducer) {
-      return  <Projects posts={projectsReducer.edges} language={language}/>
+      return  <ProjectsWrapper title={popularProjectsTitle[language]} posts={projectsReducer.edges} language={language}/>
     }
     else {
       return <FlexContainer justify='center'><StyledLoader/></FlexContainer>

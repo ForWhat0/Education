@@ -10,7 +10,12 @@ import Link from 'next/link'
 import NewsWrapper from "./newsWrapper";
 
 
-const {lastNews,button} = NewsLsi
+const {button} = NewsLsi
+
+export const Back = styled.div`
+width:100%;
+background-color:${props => props.background};
+`
 
 export const Container = styled.div`
 position:relative;
@@ -35,11 +40,11 @@ right:0;
 const ButtonContainer = styled.div`
 width:100%;
 margin-top:40px;
-display:flex;
+display:${props => props.display};
 justify-content:center;
 `
-export default function LastNews({language,posts,pageInfo}){
-    console.log(pageInfo)
+export default function LastNews({title,language,posts,pageInfo,background,buttonHide}){
+    const buttonDisplay = buttonHide ? 'none' : 'flex';
     const {loading} = useSelector(state=>state.app)
     const dispatch = useDispatch()
     const nextNews=()=>{
@@ -62,30 +67,32 @@ export default function LastNews({language,posts,pageInfo}){
     }
     return(
         <section>
-            <Container>
-                <Header>
-                    <TitleForComponent text={lastNews[language]} fontSize='40px' />
-                    <Arrows>
-                        <IconContainer opacity={loading || !pageInfo.hasPreviousPage ? '0.5' : 'unset'} disabled={loading && !pageInfo.hasPreviousPage} onClick={()=>prevNews()}>
-                            <Icon width='40px' height='30px' alt='prev' src='/left.png'/>
-                        </IconContainer>
-                        <IconContainer opacity={loading || !pageInfo.hasNextPage ? '0.5' : 'unset'} disabled={loading && !pageInfo.hasNextPage} onClick={()=>nextNews()}>
-                            <Icon width='40px' height='30px' alt='next' src='/right.png'/>
-                        </IconContainer>
-                    </Arrows>
-                </Header>
-                <NewsWrapper posts={posts}/>
-                <ButtonContainer>
-                    <Link href={'/news'}>
-                        <a>
-                            <StyledButton
-                                func={()=> {
-                                return null }}
-                                text={button[language]}/>
-                        </a>
-                    </Link>
-                </ButtonContainer>
-            </Container>
+            <Back background={background}>
+                <Container>
+                    <Header>
+                        <TitleForComponent text={title} fontSize='40px' />
+                        <Arrows>
+                            <IconContainer opacity={loading || !pageInfo.hasPreviousPage ? '0.5' : 'unset'} disabled={loading && !pageInfo.hasPreviousPage} onClick={()=>prevNews()}>
+                                <Icon width='40px' height='30px' alt='prev' src='/left.png'/>
+                            </IconContainer>
+                            <IconContainer opacity={loading || !pageInfo.hasNextPage ? '0.5' : 'unset'} disabled={loading && !pageInfo.hasNextPage} onClick={()=>nextNews()}>
+                                <Icon width='40px' height='30px' alt='next' src='/right.png'/>
+                            </IconContainer>
+                        </Arrows>
+                    </Header>
+                    <NewsWrapper posts={posts}/>
+                    <ButtonContainer display={buttonDisplay}>
+                        <Link href={'/news'}>
+                            <a>
+                                <StyledButton
+                                    func={()=> {
+                                        return null }}
+                                    text={button[language]}/>
+                            </a>
+                        </Link>
+                    </ButtonContainer>
+                </Container>
+            </Back>
         </section>
     )
 }

@@ -1,7 +1,16 @@
-import {hideLoader,showLoader, showAlert, hideAlert,changeLanguage} from '../types/types'
+import {
+    hideLoader,
+    showLoader,
+    showAlert,
+    hideAlert,
+    changeLanguage,
+    showExtraLoader,
+    hideExtraLoader
+} from '../types/types'
 
 const initialState = {
     loading:false,
+    extraLoading:false,
     alert:null,
     title:'HOME',
     type:'success',
@@ -26,6 +35,18 @@ export const appReducer = ( state = initialState,action ) =>{
             return {
                 ...state,
                 loading: false
+            }
+        }
+        case showExtraLoader:{
+            return {
+                ...state,
+                extraLoading: true
+            }
+        }
+        case hideExtraLoader:{
+            return {
+                ...state,
+                extraLoading: false
             }
         }
         case showAlert:{

@@ -1,5 +1,15 @@
-import {hideLoader, showLoader, showAlert, hideAlert, changeLanguage, getProjects, getNews} from '../types/types'
-import {getProjectsAPI, getNewsForHome} from "../../lib/api";
+import {
+    hideLoader,
+    showLoader,
+    showAlert,
+    hideAlert,
+    changeLanguage,
+    getNewsById,
+    getProjects,
+    getNews,
+    showExtraLoader, hideExtraLoader
+} from '../types/types'
+import {getProjectsAPI, getNewsForHome, getNewsByIdAPI} from "../../lib/api";
 
 export function actionGetProjects(
     projectVariables
@@ -20,7 +30,7 @@ export function actionGetProjects(
 export function actionGetNews(
     newsVariables
 ){
-    return async dispatch=>{
+    return async dispatch=>{ console.log('okok')
         try{
             dispatch(ShowLoader())
             const news = await getNewsForHome(newsVariables)
@@ -29,6 +39,22 @@ export function actionGetNews(
         }
         catch (e){
 console.log(e.message)
+        }
+    }
+}
+
+export function actionGetNewsById(
+    id
+){
+    return async dispatch=>{
+        try{
+            dispatch(ShowExtraLoader())
+            const news = await getNewsByIdAPI(id)
+            dispatch({type:getNewsById,payload:news})
+            dispatch(HideExtraLoader())
+        }
+        catch (e){
+            console.log(e.message)
         }
     }
 }
@@ -74,4 +100,14 @@ export function HideLoader(){
         type:hideLoader
     }
 }
+export function ShowExtraLoader(){
+    return{
+        type:showExtraLoader
+    }
+}
 
+export function HideExtraLoader(){
+    return{
+        type:hideExtraLoader
+    }
+}

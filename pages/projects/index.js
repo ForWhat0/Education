@@ -1,96 +1,112 @@
-import {MainLayout} from '../../components/MainLayout'
-import { getAllProjects } from '../../lib/api'
-import { CMS_NAME } from '../../lib/constants'
-import Projects from "../../components/projects/projects"
-import {useSelector,useDispatch} from "react-redux";
-import {actionGetProjects} from "../../redux/actions/actions";
+import {getNewsForHome, getProjectsAPI, getProjectsForHome} from "../../lib/api";
+import {useDispatch, useSelector} from "react-redux";
+import {TitleForComponent} from "../../components/titleForComponent/title";
+import React, {useEffect} from "react";
+import {actionGetNews, actionGetProjects} from "../../redux/actions/actions";
+import {MainLayout} from "../../components/MainLayout";
+import NewsWrapper from "../../components/news/newsWrapper";
+import styled from "styled-components";
+import {ProjectsLsi} from "../../Lsi/lsi";
+import {Container} from '../../components/news/lastNews'
+import Pagination from "../../components/pagination/pagination";
+import {SearchBarStyled} from "../../components/searchBar/searchBar";
+import StyledLoader from "../../components/loader/loader";
+import Projects from "../../components/projects/projects";
+import ProjectsWrapper from "../../components/projects/projectWrapper";
 
-export default function ALLProjects({ Projects: { edges ,pageInfo}, preview }) {
-    const {language} = useSelector(state=>state.app)
+const {projects} = ProjectsLsi
+
+const FlexContainer = styled.div`
+display:flex;
+align-items:center;  
+justify-content:${props => props.justify};
+position:relative;  
+`
+
+
+export default function AllProjects({initialProjects, preview }) {
     const dispatch = useDispatch()
-    const {projects} = useSelector(state=>state.projects)
-    const loadMore=(first,
-                    after,
-                    last,
-                    before)=>{
+    const {language} = useSelector(state=>state.app)
+    const {loading} = useSelector(state=>state.app)
+    const {projectsReducer} = useSelector(state=>state.projects)
+
+    useEffect(() => {
         async function load_SPA_data() {
-            const variables={
-                first: first,
-                last: last,
-                after: after,
-                before: before
+            const projectsVariables = {
+                first: 5,
+                last: null,
+                after: null,
+                before: null
             }
-            dispatch(actionGetProjects(variables,preview))
-            console.log(variables,projects)
+            dispatch(actionGetProjects(projectsVariables,preview))
         }
 
-        load_SPA_data()
+        if (!initialProjects ) {
+            load_SPA_data()
+        }
+    }, [initialProjects])
+
+    const  renderProjects=()=>{
+        if (initialProjects && !projectsReducer){
+            return  (
+                <>
+                    <Projects title={projects[language]} posts={initialProjects.edges} language={language}/>
+                    <Container>
+                        <Pagination
+                            action={actionGetProjects}
+                            loading={loading}
+                            language={language}
+                            pageInfo={initialProjects.pageInfo}
+                        />
+                    </Container>
+                </>
+                )
+        }
+        else if (projectsReducer){
+            return (
+                <>
+                    <Projects title={projects[language]} posts={projectsReducer.edges} language={language}/>
+                   <Container>
+                       <Pagination
+                           action={actionGetProjects}
+                           loading={loading}
+                           language={language}
+                           pageInfo={projectsReducer.pageInfo}
+                       />
+                   </Container>
+                </>
+            )
+        }
+        else{
+            return <FlexContainer justify='center'><StyledLoader/></FlexContainer>
+        }
     }
     return (
-        <>
-            <MainLayout preview={preview}>
-                <div>
-                    <h2>Post List</h2>
-                    {edges ? (
-                        <div>
-                            <ul>
-                                {edges.map(edge => {
-                                    const { node } = edge;
-                                    return (
-                                        <li
-                                            key={node.id}
-                                            dangerouslySetInnerHTML={{ __html: node.title }}
-                                        />
-                                    );
-                                })}
-                            </ul>
-                            <div>
-                                {pageInfo.hasPreviousPage ? (
-                                    <button
-                                        onClick={() => {
-                                            fetchMore({
-                                                variables: {
-                                                    first: null,
-                                                    after: null,
-                                                    last: 10,
-                                                    before: pageInfo.startCursor || null
-                                                },
-                                                updateQuery
-                                            });
-                                        }}
-                                    >
-                                        Previous
-                                    </button>
-                                ) : null}
-                                {pageInfo.hasNextPage ? (
-                                    <button
-                                        onClick={() => {
-                                            loadMore(1,pageInfo.endCursor || null,null,null)
-                                        }}
-                                    >
-                                        Next
-                                    </button>
-                                ) : null}
-                            </div>
-                        </div>
-                    ) : (
-                        <div>No posts were found...</div>
-                    )}
-                </div>
-            </MainLayout>
-        </>
+        <MainLayout >
+                {renderProjects()}
+        </MainLayout>
+
     )
 }
-
-export async function getStaticProps({ preview = false }) {
-    const variables={
-        first: 1,
+AllProjects.getInitialProps = async ({req,preview}) => {
+    if (!req) {
+        return {initialNews: null}
+    }
+    const projectsVariables = {
+        first: 5,
         last: null,
         after: null,
         before: null
     }
-    const Projects = await getAllProjects(variables,preview)
+    const initialProjects = await getProjectsAPI(projectsVariables,preview)
+
     return {
-        props: { Projects, preview },
+        initialProjects,
+        preview
     }
 }
+
+
+
+
+

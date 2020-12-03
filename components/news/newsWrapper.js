@@ -45,6 +45,7 @@ export default function NewsWrapper({posts}){
                             loading ?
                                 <StyledLoader/>:
                                 <News
+                                    databaseId={node.databaseId}
                                     key={node.slug}
                                     title={node.title}
                                     coverImage={node.featuredImage?.node}

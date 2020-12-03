@@ -1,12 +1,18 @@
-import styles from './post-body.module.css'
+import styled from 'styled-components'
+
+const StyledBlock = styled.div`
+  display:flow-root;
+  margin-top:40px;
+  margin-bottom:50px;
+`;
+
 
 export default function PostBody({ content }) {
   return (
-    <div className="max-w-2xl mx-auto">
-      <div
-        className={styles.content}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
-    </div>
+      <StyledBlock>
+          <div
+              dangerouslySetInnerHTML={{ __html: content }}
+          />
+      </StyledBlock>
   )
 }

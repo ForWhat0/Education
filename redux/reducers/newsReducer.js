@@ -1,8 +1,9 @@
-import {  getNews } from "../types/types"
+import {  getNews  , getNewsById} from "../types/types"
 
 
 const initialState={
-    newsReducer:null
+    newsReducer:null,
+    newsByID:null
 }
 
 export const newsReducer = ( state = initialState , action )=>{
@@ -13,7 +14,12 @@ export const newsReducer = ( state = initialState , action )=>{
                 newsReducer:action.payload
             }
         }
-
+        case getNewsById:{
+            return {
+                ...state,
+                newsByID:action.payload
+            }
+        }
         default: return state
     }
 }
