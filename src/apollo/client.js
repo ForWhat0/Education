@@ -6,7 +6,6 @@ const isBrowser = typeof window !== "undefined";
 let tokenCache = "";
 let tokenExpiryCache = "";
 
-
 const fetchHeaderWithToken = async (headers = {}) => {
 	return await fetch('https://testkp.flexreality.pro/graphql', {
 		method: "POST",

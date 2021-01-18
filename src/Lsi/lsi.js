@@ -243,14 +243,14 @@ export const leftComment={
         RU:"Комментарий"
     },
     sent:{
-        UK:"Відправлено",
-        EN:"Sent",
-        RU:"Отправлено"
+        UK:"відправлено",
+        EN:"sent",
+        RU:"отправлено"
     },
     send:{
-        UK:"Відправити",
-        EN:"Send",
-        RU:"Отправить"
+        UK:"відправити",
+        EN:"send",
+        RU:"отправить"
     },
     error:{
         UK:"помилка",
@@ -345,14 +345,14 @@ export const leftCommentZno={
         RU:"Выберите предмет (ы)"
     },
     sent:{
-        UK:"Відправлено",
-        EN:"Sent",
-        RU:"Отправлено"
+        UK:"відправлено",
+        EN:"sent",
+        RU:"отправлено"
     },
     send:{
-        UK:"Відправити",
-        EN:"Send",
-        RU:"Отправить"
+        UK:"відправити",
+        EN:"send",
+        RU:"отправить"
     },
     error:{
         UK:"помилка",
@@ -399,9 +399,9 @@ export const finance={
         RU:"Дата размещения"
     },
     search:{
-        UK:"Пошук по даті",
-        EN:"Search by date",
-        RU:"Поиск по дате"
+        UK:"пошук по даті",
+        EN:"search by date",
+        RU:"поиск по дате"
     },
     download:{
         UK:"Завантажити",
@@ -462,25 +462,20 @@ export const appeal= {
         EN: "Last name",
         RU: "Фамилия"
     },
-    phoneNumber:{
-        UK:"Телефон:",
-        EN:"Phone:",
-        RU:"Телефон:"
-    },
     reason: {
         UK: "Причина звернення",
         EN: "The reason for the appeal",
         RU: "Причина обращения"
     },
     sent: {
-        UK: "Відправлено",
-        EN: "Sent",
-        RU: "Отправлено"
+        UK: "відправлено",
+        EN: "sent",
+        RU: "отправлено"
     },
     send: {
-        UK: "Відправити",
-        EN: "Send",
-        RU: "Отправить"
+        UK: "відправити",
+        EN: "send",
+        RU: "отправить"
     },
     error: {
         UK: "помилка",
@@ -574,9 +569,9 @@ export const registerOnEventModalLsi = {
         RU:"Ваш запрос принят."
     },
     send:{
-        UK:"Відправити",
-        EN:"Send",
-        RU:"Отправить"
+        UK:"відправити",
+        EN:"send",
+        RU:"отправить"
     },
     close:{
         UK:"Закрити",
