@@ -33,6 +33,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import {MainLayout} from "../src/components/layouts/mainLayout";
 export default function Home({contacts,locale,menu,news,events,data,services,allDates}) {
   const {mainPageFields} = data
   const parsedMenu = ParcMenu(menu)
@@ -190,7 +191,7 @@ export default function Home({contacts,locale,menu,news,events,data,services,all
       projects:mainPageFields.projectPopular
     }
   return (
-      <HomePageLayout
+      <MainLayout
           databaseId={data.databaseId}
      contacts={contacts}
      menu={parsedMenu}
@@ -291,7 +292,7 @@ export default function Home({contacts,locale,menu,news,events,data,services,all
         </div>
         }
         {news.nodes.length > 0 &&<LastNews locale={locale} titleNews={mainPageFields?.titleNews} padding='40px 0 80px 0'  posts={news.nodes}  pageInfo={news.pageInfo} />}
-      </HomePageLayout>
+      </MainLayout>
   )
 }
 export async function getStaticProps({locale} ){
