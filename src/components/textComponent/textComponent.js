@@ -69,12 +69,7 @@ const StyledTextComponent =({offBorder,fontSize,paddingBottom,bottom,title,excer
                                 :
                                 <>
                                     <ReviewButton/>
-                                    {
-                                        date &&
-                                        <StyledDate>
-                                            {date.slice(0, 10).split('-').reverse().join('.')}
-                                        </StyledDate>
-                                    }
+                                    
                                 </>
                         }
                     </Review>

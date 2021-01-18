@@ -33,7 +33,8 @@ export default function Home({contacts,locale,menu,news,events,data,services,all
      title = {mainPageFields.titleBanner}
       >
 
-
+        {events.length > 0 &&<Events locale={locale} titleEvent={mainPageFields?.titleEvent}  posts={events}/>}
+        {events.length > 0 &&<EventsMobile locale={locale} titleEvent={mainPageFields?.titleEvent} allDates={allDates}  posts={events[0]}/>}
         {services?.nodes.length > 0 &&
         <div id="Services"  className="element">
           <Services locale={locale} titleServices={mainPageFields?.titleServices}  posts={services.nodes}  pageInfo={services.pageInfo} />
@@ -48,7 +49,7 @@ export default function Home({contacts,locale,menu,news,events,data,services,all
           <Team  posts={teamData}/>
         </div>
         }
-
+        {news.nodes.length > 0 &&<LastNews locale={locale} titleNews={mainPageFields?.titleNews} padding='40px 0 80px 0'  posts={news.nodes}  pageInfo={news.pageInfo} />}
       </HomePageLayout>
   )
 }
