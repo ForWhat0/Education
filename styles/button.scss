@@ -1,0 +1,139 @@
+$dark-blue: #1D1D1B;
+$green: #1D1D1B;
+$action-color: #1D1D1B;
+
+.btn{
+  background: #1D1D1B;
+  border: 1px solid white;
+  border-radius: 28px;
+  text-align:center;
+  color: #FFFFFF;
+  font-size: 16px;
+  padding: 8px 22px;
+  cursor: pointer;
+}
+
+.button {
+  background: #1D1D1B;
+  border:unset;
+  border-radius: 28px;
+  text-align:center;
+  color: #FFFFFF;
+  font-size: 16px;
+  padding: 8px 22px;
+  cursor: pointer;
+  transition: all 0.1s ease-out;
+
+  &:hover {
+    background-color: $action-color;
+    color: #fff;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &--bubble {
+    position: relative;
+    z-index: 2;
+    color: white;
+
+    width: 100%;
+    background: none;
+    height: 100%;
+
+    &:hover {
+      background: none;
+    }
+
+    &:hover + .button--bubble__effect-container .circle {
+      background: darken($action-color, 15%);
+    }
+
+    &:hover + .button--bubble__effect-container .button {
+      background: darken($action-color, 15%);
+    }
+
+    &:active + .button--bubble__effect-container {
+      transform: scale(0.95);
+    }
+
+    &__container {
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+
+      .effect-button {
+        position: absolute;
+        width: 50%;
+        height: 25%;
+        padding:0;
+        top: 50%;
+        left: 25%;
+        z-index: 1;
+        transform: translateY(-50%);
+        background: $dark-blue;
+        transition: background 0.1s ease-out;
+      }
+    }
+  }
+}
+
+.button--bubble__effect-container {
+  position: absolute;
+  display: block;
+  width: 200%;
+  height: 400%;
+  top: -150%;
+  padding: 0;
+  left: -50%;
+  -webkit-filter: url("#goo");
+  filter: url("#goo");
+  transition: all 0.1s ease-out;
+  pointer-events: none;
+
+  .circle {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 15px;
+    background: $dark-blue;
+    transition: background 0.1s ease-out;
+
+    &.top-left {
+      top: 40%;
+      left: 27%;
+    }
+
+    &.bottom-right {
+      bottom: 40%;
+      right: 27%;
+    }
+  }
+}
+
+.goo {
+  position: absolute;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
+
+
+
+
+
+@keyframes hue-rotate {
+  from {
+    -webkit-filter: hue-rotate(0);
+    -moz-filter: hue-rotate(0);
+    -ms-filter: hue-rotate(0);
+    filter: hue-rotate(0);
+  }
+  to {
+    -webkit-filter: hue-rotate(360deg);
+    -moz-filter: hue-rotate(360deg);
+    -ms-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
