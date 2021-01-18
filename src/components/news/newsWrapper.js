@@ -1,20 +1,23 @@
-import {useSelector} from "react-redux";
-import {NewsLsi} from "../../Lsi/lsi"
 import styled from 'styled-components'
 import News from "./news"
-import StyledLoader from "../loader/loader";
-const {review} = NewsLsi
+import {device} from "../deviceSizes/deviceSizes";
 
 const NewsContainer = styled.div`
+@media screen and ${device.laptop}{
+  grid-template-columns: 1fr 1fr;
+  }
+  @media screen and ${device.tablet}{
+  grid-template-columns: 1fr;
+  }
 margin-top:40px;
- display: inline-flex;
-    flex-wrap: wrap;
-    gap: 30px;
+gap: 30px;
+grid-gap: 30px;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
 `
 const StyledContainer = styled.div`
  display:flex;
  cursor:pointer;
- flex: 1 1 300px;
  flex-direction: column;
  overflow: hidden;
  margin: 0 0 40px;
@@ -24,6 +27,9 @@ const StyledContainer = styled.div`
     &:hover  {
     transform: scale(1.01);
   }
+  @media (max-width: 1010px) {
+     max-width: 100%;
+  }
  @media (max-width: 768px) {
     flex-direction: column;
     padding-bottom: 40px;
@@ -31,12 +37,10 @@ const StyledContainer = styled.div`
   }
 `
 export default function NewsWrapper({posts}){
-    const {loading} = useSelector(state=>state.app)
-    const {language} = useSelector(state=>state.app)
     return(
             <NewsContainer>
                 {posts.map(node =>
-                    <StyledContainer>
+                    <StyledContainer key={node.databaseId}>
                         <News
                             databaseId={node.databaseId}
                             key={node.slug}
@@ -45,7 +49,6 @@ export default function NewsWrapper({posts}){
                             date={node.date}
                             slug={node.slug}
                             excerpt={node.excerpt}
-                            textForIcon={review[language]}
                         />
 
                     </StyledContainer>

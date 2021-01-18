@@ -293,9 +293,9 @@ export const calendarLsi = {
         RU:"Календарь"
     },
     search:{
-        UK:"пошук за назвою події",
-        EN:"search by event name",
-        RU:"поиск по названию события"
+        UK:"Пошук за назвою події",
+        EN:"Search by event name",
+        RU:"Поиск по названию события"
     },
     result:{
         UK:"Результат пошуку",
@@ -306,6 +306,11 @@ export const calendarLsi = {
         UK:"Такої події не існує",
         EN:"There is no such event",
         RU:"Такого события не существует"
+    },
+    todayNotExist:{
+        UK:"Вибачте, на сьогодні не заплановано ніяких подій.",
+        EN:"Sorry, no events are scheduled for today.",
+        RU:"Извините, на сегодня нет мероприятий."
     }
 }
 export const leftCommentZno={
@@ -389,9 +394,9 @@ export const leftCommentZno={
 }
 export const finance={
     report:{
-        UK:"звіт за",
-        EN:"report for",
-        RU:"отчет по"
+        UK:"Звіт за",
+        EN:"Report for",
+        RU:"Отчет по"
     },
     date:{
         UK:"Дата розміщення",
@@ -463,9 +468,9 @@ export const appeal= {
         RU: "Фамилия"
     },
     phoneNumber:{
-        UK:"Телефон:",
-        EN:"Phone:",
-        RU:"Телефон:"
+        UK:"Телефон",
+        EN:"Phone",
+        RU:"Телефон"
     },
     reason: {
         UK: "Причина звернення",
@@ -542,16 +547,26 @@ export const LogInLsi = {
         RU: "Фамилия"
     },
 }
-export const registerOnEventModalLsi = {
-    title: {
+export const ModalLsi = {
+    titleEvent: {
         UK: "Реєстрація на захід",
         EN: "Registration for the event",
         RU: "Регистрация на мероприятие"
     },
-    subTitle: {
+    subTitleEvent: {
         UK: "Для реєстрації введіть Ваші дані",
         EN: "To register, enter your details",
         RU: "Для регистрации введите Ваши данныемя"
+    },
+    titleService: {
+        UK: "Запит на послугу",
+        EN: "Service request",
+        RU: "Запрос на услугу"
+    },
+    subTitleService: {
+        UK: "Для запиту введіть Ваші дані",
+        EN: "To request, enter your details",
+        RU: "Для запроса введите Ваши данныемя"
     },
     name: {
         UK: "Ім'я",
@@ -562,6 +577,11 @@ export const registerOnEventModalLsi = {
         UK: "Прізвище",
         EN: "Last name",
         RU: "Фамилия"
+    },
+    phoneNumber:{
+        UK:"Телефон:",
+        EN:"Phone:",
+        RU:"Телефон:"
     },
     thanks: {
         UK: "Дякуємо!",
@@ -588,7 +608,7 @@ export const registerOnEventModalLsi = {
         EN:"Please fill out all fields",
         RU:"Пожалуйста, заполните все поля"
     },
-    wrongName:{
+    wrongData:{
         UK:"Введіть коректні дані",
         EN:"Enter the correct data",
         RU:"Введите корректные данные"

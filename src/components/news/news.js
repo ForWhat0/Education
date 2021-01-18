@@ -1,5 +1,4 @@
 import styled, {keyframes} from 'styled-components'
-import React from "react"
 import StyledTextComponent from "../textComponent/textComponent"
 import Link from 'next/link';
 import {useSelector} from "react-redux";
@@ -42,14 +41,20 @@ const StyledPhoto = styled.img`
 export default function News(props) {
     const {images} = useSelector(state=>state.app)
     return (
-        <Link href={`/news/[slug]`} as={`/news/${props.slug}`}>
+        <Link href={`/news/[slug]?newsSlug=${props.slug}`} as={`/news/${props.slug}`}>
     <NewsContainer>
         <PhotoContainer display={images ? 'block' : 'none'} >
             <StyledPhoto
                 src={props.coverImage?.sourceUrl}
             />
         </PhotoContainer>
-        <StyledTextComponent fontSize='24px!important' paddingBottom='40px' bottom={true} title={props.title} date={props.date} textForIcon={props.textForIcon}/>
+        <StyledTextComponent
+            fontSize='24px!important'
+            paddingBottom='40px'
+            bottom={true}
+            title={props.title}
+            date={props.date}
+            textForIcon={props.textForIcon}/>
     </NewsContainer>
         </Link>
     )

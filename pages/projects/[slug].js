@@ -1,19 +1,12 @@
-import { useRouter } from 'next/router'
 import reduxClient from "../../src/apollo/reduxClient"
 import StyledLoader from "../../src/components/loader/loader";
 import {TitleForComponent} from "../../src/components/titleForComponent/title";
 import PostBody from "../../src/components/post-body/post-body";
-import LastNews from "../../src/components/news/lastNews";
 import styled from "styled-components";
 import {MainLayout} from "../../src/components/layouts/mainLayout";
 import GET_ALL_SLUG_FROM_PROJECTS from "../../src/queries/get-all-slug-from-projects";
 import GET_PROJECT_BY_SLUG from "../../src/queries/get-project-by-slug";
-import React from "react";
-import Icon from "../../src/components/icon/icon";
 import {ParcMenu} from "../../src/components/hooks/hooks";
-import GET_DATABASE_ID_FROM_TIME from "../../src/queries/get_all_databaseId_from_time";
-import GET_HOUR_BY_ID from "../../src/queries/get_hour_by_id";
-import GET_EVENTS_DATE from "../../src/queries/get_all_events_dete";
 import {useSelector} from "react-redux";
 
  const Container = styled.div`
@@ -48,7 +41,7 @@ span{
 margin-left:10px;
 margin-right:10px;
 color:blue;
-border-bottom:1px solid blue;
+border-bottom:1px solid rgb(0,114,188);
 } 
 
 `
@@ -65,7 +58,7 @@ align-items:center;
 padding-bottom:40px;
 margin-bottom:40px;
 align-items:center;
-border-bottom:1px solid #1D1D1B;
+border-bottom:1px solid ${props=>props.borderColor};
 @media screen and (max-width:1200px) {
     flex-direction: column;
   }
@@ -92,10 +85,9 @@ margin-left:${props=>props.marginR};
   }
 `
 export default function ProjectDetails({projectBySlug,menu,contacts}) {
-     const router = useRouter();
     const parsedMenu = ParcMenu(menu)
     const {visuallyImpairedMode} = useSelector(state=>state.app)
-
+    const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
     return (
         <MainLayout databaseId={projectBySlug.databaseId} contacts={contacts} menu={parsedMenu}>
             {
@@ -109,13 +101,13 @@ export default function ProjectDetails({projectBySlug,menu,contacts}) {
                     >
 
                         <ContainerWrapper>
-                            <Header>
+                            <Header borderColor={visuallyImpairedModeWhiteTheme ? '#1D1D1B' : 'white'}>
                                 <TitleForComponent displayYellowDiv={false} text={projectBySlug.title} fontSize='40px'/>
                                 <Icons>
                                     {
                                         projectBySlug.projectFields.playLink &&
                                         <IconItem marginR='20px'>
-                                            <a href={projectBySlug.projectFields.playLink}>
+                                            <a target='_blank' href={projectBySlug.projectFields.playLink}>
                                                 <div style={{width:'130px',height:'40px',background:'url(/googlePlayIcon.svg) no-repeat'}}/>
                                             </a>
                                         </IconItem>
@@ -123,7 +115,7 @@ export default function ProjectDetails({projectBySlug,menu,contacts}) {
                                     {
                                         projectBySlug.projectFields.appLink &&
                                         <IconItem marginR='20px'>
-                                            <a href={projectBySlug.projectFields.appLink}>
+                                            <a target='_blank' href={projectBySlug.projectFields.appLink}>
                                                 <div style={{width:'130px',height:'40px',background:'url(/appStore.svg) no-repeat'}}/>
                                             </a>
                                         </IconItem>
@@ -131,10 +123,11 @@ export default function ProjectDetails({projectBySlug,menu,contacts}) {
                                     {
                                         projectBySlug.projectFields.siteLink &&
                                         <IconItem marginR='60px'>
-                                            <a href={projectBySlug.siteLink}>
+                                            <a target='_blank' href={projectBySlug.projectFields.siteLink}>
                                                 <div style={{width:'40px',height:'40px',background:'url(/linkIconDark.svg) no-repeat'}}/>
                                                 <div>
-                                                    <span>{projectBySlug.projectFields.siteLink}</span>
+                                                    <span style={{color:'rgb(0,114,188)'}}
+                                                    >{projectBySlug.projectFields.siteLink}</span>
                                                 </div>
 
                                             </a>
@@ -165,7 +158,7 @@ export async function getStaticProps({params,locale}){
     const contactsUri = locale === "EN" ? "/en/contacts/" : locale === "RU" ? "/ru/kontakty/"  : "/kontakti/"
     const location = locale === "EN" ? "HEADER_MENU___EN" : locale === "RU" ? "HEADER_MENU___RU"  : "HEADER_MENU"
 
-    const { data ,loading } = await reduxClient.query( {
+    const { data  } = await reduxClient.query( {
         query: GET_PROJECT_BY_SLUG,
         variables: {
             slug,

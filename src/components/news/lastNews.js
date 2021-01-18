@@ -1,23 +1,19 @@
 import {TitleForComponent} from "../titleForComponent/title";
 import {NewsLsi} from "../../Lsi/lsi"
-import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
 import {StyledButton} from '../button/button'
-import Icon from "../icon/icon";
 import {useDispatch, useSelector} from "react-redux";
 import Link from 'next/link'
 import NewsWrapper from "./newsWrapper";
 import {actionGetNews, actionGetNextNewsForMobile} from "../../redux/actions/actions";
 import News from "./news";
-import {device} from "../deviceSizes/deviceSizes";
+import {createRef} from "react";
 
-
-const {button} = NewsLsi
 
 export const Back = styled.div`
 width:100%;
 background-color:${props => props.background};
-padding-bottom:${props => props.margin};
+padding:${props => props.padding};
 `
 
 export const Container = styled.div`
@@ -103,7 +99,7 @@ const ScrollBarStyledInner = styled.div`
  cursor:pointer;
  flex-direction: row;
 `
-export default function LastNews({locale,titleNews,margin,title,language,posts,pageInfo,background,buttonHide,fetchMoreNews}){
+export default function LastNews({locale,padding,posts,pageInfo,background,buttonHide}){
 
     const buttonDisplay = buttonHide ? 'none' : 'flex';
     const {loading} = useSelector(state=>state.app)
@@ -121,7 +117,7 @@ export default function LastNews({locale,titleNews,margin,title,language,posts,p
     const hasNextPage = newsReducer?.data?.news?.pageInfo?.offsetPagination ? newsReducer.data.news.pageInfo.offsetPagination.hasMore : pageInfo.offsetPagination.hasMore
     const hasPreviousPage = newsReducer?.data?.news?.pageInfo?.offsetPagination ? newsReducer.data.news.pageInfo.offsetPagination.hasPrevious : pageInfo.offsetPagination.hasPrevious
 
-    const inputRef = React.createRef();
+    const inputRef = createRef();
     const nextNews=()=>{
         if (loading || !hasNextPage){
             return null
@@ -141,7 +137,7 @@ export default function LastNews({locale,titleNews,margin,title,language,posts,p
         dispatch(actionGetNews(offset-3,locale))
     }
 
-    const checkScroll = e => {
+    const checkScroll = () => {
         const scrollWidth = inputRef.current.scrollWidth;
         const scrollBarWidth =  inputRef.current.offsetWidth
         const newScrollLeft = inputRef.current.scrollLeft;
@@ -149,13 +145,12 @@ export default function LastNews({locale,titleNews,margin,title,language,posts,p
             nextNewsForMobile()
         }
     };
-
     return(
         <section>
-            <Back margin={margin} background={background}>
+            <Back padding={padding} background={background}>
                 <Container>
                     <Header>
-                        <TitleForComponent text={NewsLsi.otherNews[locale]} fontSize='40px' />
+                        <TitleForComponent marginTop='unset' text={NewsLsi.otherNews[locale]} fontSize='40px' />
                         <Arrows>
                             <ArrowIcon
                                 arrow={!visuallyImpairedModeWhiteTheme ? '/WhiteLeftArrow.svg' : '/leftArrow.svg'}
@@ -180,7 +175,7 @@ export default function LastNews({locale,titleNews,margin,title,language,posts,p
                     >
                         <ScrollBarStyledInner>
                             {newsForMobile.map(node =>
-                                <StyledContainer>
+                                <StyledContainer key={node.databaseId}>
                                     <News
                                         databaseId={node.databaseId}
                                         key={node.slug}

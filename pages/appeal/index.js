@@ -1,19 +1,17 @@
 import styled from 'styled-components'
 import {TitleForComponent} from "../../src/components/titleForComponent/title";
 import client from "../../src/apollo/client";
-import GET_NEWS from "../../src/queries/getNews";
 import GET_MENU_AND_CONTACTS from "../../src/queries/getMenuAndContacts";
 import {MainLayout} from "../../src/components/layouts/mainLayout";
-import React, {useState} from "react";
-import {ParcMenu, registerOnEventHook, sendAppeal, sendMail} from "../../src/components/hooks/hooks";
+import  {useState} from "react";
+import {ParcMenu, sendAppeal,} from "../../src/components/hooks/hooks";
 import {InputStyled} from "../../src/components/input/input";
-import {appeal, leftComment, leftCommentZno} from "../../src/Lsi/lsi";
-import {InputsFields, Label, Select} from "../../src/components/leftComment/leftCommentStyLedComponents";
+import {appeal, leftComment} from "../../src/Lsi/lsi";
+import { Label} from "../../src/components/leftComment/leftCommentStyLedComponents";
 import {SendButton} from "../../src/components/sendButton/sendButton";
-import {ShowAlert} from "../../src/redux/actions/actions";
 import {useMutation} from "@apollo/client";
 import SEND_COMMENT from "../../src/mutations/sendComment";
-import {useDispatch, useSelector} from "react-redux";
+import {SelectStyled} from "../../src/components/select/select";
 
 const Global = styled.div`
 
@@ -141,6 +139,7 @@ margin-left:10%;
 const Form = styled.div`
 position:relative;
 width:320px;
+z-index: 2;
 @media screen and (max-width:950px) {
       width: 96%;
     margin-left: 2%;
@@ -148,30 +147,40 @@ width:320px;
   }
 `
 export default function  Appeal({locale,contacts,menu,appeals}){
-    const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
     const parsedMenu = ParcMenu(menu)
     const [name, setName] = useState('')
     const [lastName, setLastName] = useState('')
     const [phone, setPhone] = useState('')
     const [reason, setReason] = useState('')
-    const dispatch = useDispatch()
-
+    const [nameWarning, setNameWarning] = useState(null)
+    const [lastNameWarning, setLastNameWarning] = useState(null)
+    const [phoneWarning, setPhoneWarning] = useState(null)
 
     const registerOnEvent = async (event) => {
         event.preventDefault()
-        if ( name && lastName  && phone && reason ){
+
+        if ( !name ) {
+            return  setNameWarning(leftComment.errors.emptyFields[locale])
+        }
+        if ( !lastName ) {
+            return  setLastNameWarning(leftComment.errors.emptyFields[locale])
+        }
+        if ( !phone ) {
+            return  setPhoneWarning(leftComment.errors.emptyFields[locale])
+        }
+        if (!reason){
+            return setNameWarning(leftComment.errors.emptyFields[locale])
+        }
+
             if (phone.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)) {
-                sendWordpress()
+                await sendWordpress()
                 await sendAppeal( name,lastName,reason,phone )
             }
           else {
-                dispatch(ShowAlert(leftComment.errors.wrongPhoneNumber[locale], 'error'))
+              setPhone('')
+               return setPhoneWarning(leftComment.errors.wrongPhoneNumber[locale])
             }
 
-        }
-        else {
-            dispatch(ShowAlert(leftComment.errors.emptyFields[locale], 'error'))
-        }
     }
     const content =
         `
@@ -195,24 +204,41 @@ export default function  Appeal({locale,contacts,menu,appeals}){
             if ( !error ) {
                 setName('')
                 setLastName('')
-                dispatch(ShowAlert(leftComment.sent[locale],'success'))
+                setPhone('')
+                setReason('')
+                setNameWarning('')
+                setLastNameWarning('')
+                setPhoneWarning('')
             }
         },
         onError: ( error ) => {
             if ( error ) {
                 setName('')
                 setLastName('')
-                dispatch(ShowAlert(leftComment.sent[locale],'success'))
+                setPhone('')
+                setReason('')
+                setNameWarning('')
+                setLastNameWarning('')
+                setPhoneWarning('')
             }
         }
     } )
-
+    const handleChange = selectedOption => {
+        setReason(selectedOption)
+    }
+    const options = [];
+    appeals?.map(less=>
+        options.push({
+            value: less.appealsText,
+            label: less.appealsText
+        })
+    )
 
     return(
         <MainLayout databaseId={16688} contacts={contacts} menu={parsedMenu}>
             <Global >
                 <Title>
-                    <TitleForComponent text={appeal.appeal[locale]}/>
+                    <TitleForComponent marginBottom='unset' text={appeal.appeal[locale]}/>
                 </Title>
                 <Content>
                     <PaperPlane/>
@@ -224,18 +250,19 @@ export default function  Appeal({locale,contacts,menu,appeals}){
                         </Text>
                     </GrayBackground>
                     <Form>
-                        <InputStyled value={name}   text={appeal.name[locale]} onChange={e => setName(e.target.value)}  width='100%'/>
-                        <InputStyled  value={lastName}  text={appeal.lastName[locale]} onChange={e => setLastName(e.target.value)}  width='100%'/>
-                        <InputStyled  value={lastName}  text={appeal.phoneNumber[locale]} onChange={e => setPhone(e.target.value)}  width='100%'/>
+                        <InputStyled maxlength='20' warning={nameWarning}  value={name}   text={appeal.name[locale]} onChange={e => setName(e.target.value)}  width='100%'/>
+                        <InputStyled maxlength='20' warning={lastNameWarning}   value={lastName}  text={appeal.lastName[locale]} onChange={e => setLastName(e.target.value)}  width='100%'/>
+                        <InputStyled maxlength='20' warning={phoneWarning}   value={phone}  text={appeal.phoneNumber[locale]} onChange={e => setPhone(e.target.value)}  width='100%'/>
                         <Label>
                             {appeal.reason[locale]}
                         </Label>
-                        <Select  style={{marginBottom:'20px'}} onChange={e => setReason(e.target.value)}>
-                            <option hidden disabled selected value> </option>
-                            {appeals?.map(less=>
-                                <option key={less.appealsText} value={less.appealsText}>{less.appealsText}</option>
-                            )}
-                        </Select>
+                        <div style={{marginBottom:'20px'}}>
+                            <SelectStyled
+                                value={reason}
+                                onChange={handleChange}
+                                options={options}
+                            />
+                        </div>
                         <SendButton
                             sentText={leftComment.sent[locale]}
                             sendText={leftComment.send[locale]}

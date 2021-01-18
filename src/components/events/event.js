@@ -1,15 +1,12 @@
 import styled, {keyframes} from 'styled-components'
-import Link from "next/link"
 import {device} from "../deviceSizes/deviceSizes";
 import {format,isToday} from "date-fns";
 import {uk,enGB, ru} from "date-fns/locale";
-import {MonthYearLabel} from "../datePicker/styledDatePicker";
 import {events} from "../../Lsi/lsi"
-import React from "react";
-import {ArrowContainer} from "../textComponent/textComponent";
-import {ArrowIcon} from "../textComponent/textComponent";
 import {useSelector} from "react-redux";
 import {StyledButton} from "../button/button";
+import {firstChartToUpperCase} from "../hooks/hooks";
+import {ReviewButton} from "../button/reviewButton";
 
 const opacity = keyframes`
  0%   { opacity: 0; }
@@ -22,10 +19,11 @@ padding-top:${props=>props.visuallyImpairedMode ? '20px' : '50px'};
 padding-bottom:${props=>props.visuallyImpairedMode ? '20px' : '50px'};
 display:${props=>props.visuallyImpairedMode ? 'flex' : 'block'};
 align-items:center;
-border-bottom:${props=>props.visuallyImpairedMode ? '1px solid' : 'unset'};
-background: #FFFFFF;
+border-bottom:${props=>!props.visuallyImpairedModeWhiteTheme ? '1px solid white' : props=>props.visuallyImpairedMode ? '1px solid'  : 'unset'};
+background:transparent;
 box-shadow: ${props=>props.visuallyImpairedMode ? 'unset' : '0px 0px 20px rgba(29, 29, 27, 0.2)'};
 border-radius: ${props=>props.visuallyImpairedMode ? 'unset' : '28px'};
+color:${props=>!props.visuallyImpairedModeWhiteTheme ? 'white' : 'black'};
 position:relative;
 cursor:pointer;
  @media screen and ${device.mobileL} {
@@ -90,7 +88,7 @@ position: ${props=>props.visuallyImpairedMode ? 'initial' : 'absolute'};;
 const Icon = styled.i`
     display: flex;
     font-size: 20px;
-    color: #000000;
+    color: ${props=>props.color};
     cursor:pointer;
     margin-right:5px;
     border: ${props=>props.border};
@@ -136,15 +134,11 @@ const Review = styled.div`
 display:none;
   }
 `
-const IconText = styled.div`
-   margin-left: 10px;
-   font-weight:bold;
-   line-height:15px;  
-`
 
 
 export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
     const {visuallyImpairedMode} = useSelector(state=>state.app)
+    const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
     const inputDate = new Date(hoursOne?.hoursEvents?.hoursEvents ? hoursOne.hoursEvents.hoursEvents :new  Date())
     const borderLeft = visuallyImpairedMode ? '#1D1D1B' : borderLeftColor
     const renderDay=()=>{
@@ -152,12 +146,16 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
             return events.today[locale]
         }
         else{
-            return  format(inputDate,  "EEEE",{locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk})
+            return  firstChartToUpperCase(
+                format(
+                    inputDate,  "EEEE",{locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk}
+                )
+            )
         }
     }
 
     return (
-            <EventContainer visuallyImpairedMode={visuallyImpairedMode}>
+            <EventContainer visuallyImpairedModeWhiteTheme={visuallyImpairedModeWhiteTheme} visuallyImpairedMode={visuallyImpairedMode}>
                <TimeContainer visuallyImpairedMode={visuallyImpairedMode} borderLeftColor={borderLeft}>
                    <TextField
                        fontSize='40px !important'
@@ -171,7 +169,12 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                            fontSize='16px'
                            fontWeight='500'
                        >
-                           {format(inputDate, "MMMM yyyy", {locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk})}
+                           {
+                               firstChartToUpperCase(
+                                   format(inputDate, "MMMM yyyy", {locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk})
+                               )
+
+                           }
                        </TextField>
                        <TextField
                            fontSize='16px'
@@ -182,6 +185,7 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                    </MonthAndDay>
                        <Time visuallyImpairedMode={visuallyImpairedMode}>
                            <Icon
+                               color={!visuallyImpairedModeWhiteTheme ? 'white' : 'black'}
                                className="fa fa-clock-o"
                                aria-hidden="true"
                            />
@@ -197,13 +201,8 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                     visuallyImpairedMode ?
                         <StyledButton  text={events.review[locale]}/>
                         :
-                        <Review >
-                            <ArrowContainer>
-                                <ArrowIcon/>
-                            </ArrowContainer>
-                            <IconText>
-                                {events.review[locale]}
-                            </IconText>
+                        <Review>
+                        <ReviewButton/>
                         </Review>
                 }
             </EventContainer>

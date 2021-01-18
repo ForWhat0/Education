@@ -12,18 +12,18 @@ export default function LogIn ({locale,siteInfo,title}){
     return(
         <LogInRegisterLayout locale={locale} siteInfo={siteInfo} title={title}>
 
-            <InputStyled background='transparent' text={LogInLsi.name[locale]}/>
-            <InputStyled background='transparent' text={LogInLsi.lastName[locale]} />
-            <InputStyled background='transparent' text={LogInLsi.login[locale]} />
-            <InputStyled background='transparent' text={LogInLsi.password[locale]} />
+            <InputStyled  text={LogInLsi.name[locale]}/>
+            <InputStyled  text={LogInLsi.lastName[locale]} />
+            <InputStyled  text={LogInLsi.login[locale]} />
+            <InputStyled  text={LogInLsi.password[locale]} />
 
             <LogInRegisterFooter>
                 <Link href='/logIn'>
-                    <a style={{marginBottom:'10px'}}>
+                    <a style={{margin:'10px'}}>
                         <span>{LogInLsi.logIn[locale]}</span>
                     </a>
                 </Link>
-                <div style={{marginBottom:'10px'}}>
+                <div style={{margin:'10px'}}>
                     <StyledButton text={LogInLsi.register[locale]} />
                 </div>
             </LogInRegisterFooter>

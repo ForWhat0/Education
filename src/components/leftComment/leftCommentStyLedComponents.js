@@ -9,11 +9,13 @@ align-items:center;
 `
 export  const Title = styled.h1`
  @media screen and ${device.tablet} {
+ width:100%;
      margin-left:3%;
      font-size:20px;
   }
+  width:40%;
 font-size:40px;
-margin-bottom:10px;
+margin-bottom:20px;
 margin-left: 10%;
 `
 
@@ -117,9 +119,7 @@ margin-top: 5px;
     linear-gradient(45deg, transparent 50%, #1D1D1B 50%),
     linear-gradient(135deg, #1D1D1B 50%, transparent 50%);
   background-position:
-    calc(100% - 20px) calc(1em + 2px),
-    calc(100% - 15px) calc(1em + 2px),
-    calc(100% - 2.5em) 0.5em;
+    calc(100% - 20px) calc(2em - 10px), calc(100% - 15px) calc(2em - 10px), calc(100% - 2.5em) 0.5em;
   background-size:
     5px 5px,
     5px 5px,

@@ -1,12 +1,7 @@
 import styled from 'styled-components'
-import React from "react";
-import {TitleForComponent} from '../titleForComponent/title'
-import Icon from '../icon/icon'
-import Link from "next/link";
 import StyledTextComponent from "../textComponent/textComponent";
 import {StyledDivWithIconBackGround} from "./backgroundWithIcon";
 import {device} from "../deviceSizes/deviceSizes";
-import {hexToRgbA} from "../hooks/hooks";
 import {useSelector} from "react-redux";
 
 const Container = styled.div`
@@ -18,6 +13,7 @@ align-items:center;
 justify-content: center;
 overflow: hidden;
 position: relative;
+
 `
 const ContainerWrapper = styled.div`
 z-index:1;
@@ -36,7 +32,6 @@ flex-direction:column;
   }
 `
 const ImageContainer = styled.div`
-width: 45%;
 margin-right: ${props=>props.rightImage};
 justify-content: ${props=>props.justifyImage};
 display: ${props=>props.display};
@@ -58,6 +53,7 @@ filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.2));
   }
 `
 const Text = styled.div`
+width:100%;
 color:${props=>props.color};
 width:${props=>props.width};
 margin-right: ${props=>props.rightText};
@@ -81,7 +77,7 @@ export default function Project(props) {
     const {images} = useSelector(state=>state.app)
     const {visuallyImpairedMode} = useSelector(state=>state.app)
     const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
-    const background = hexToRgbA(props.background)
+    const background = props.background
     const rightText = props.flexDirection === 'row' ? 'unset' : '5%'
     const rightImage = props.flexDirection === 'row' ? '5%' : 'unset'
     const justifyImage = props.flexDirection === 'row' ? 'unset' : 'flex-end'
@@ -97,7 +93,7 @@ export default function Project(props) {
                             <ImageContainer display={images ? 'flex' : 'none'}  justifyImage={justifyImage} rightImage={rightImage}>
                                 <Image  src={props.coverImage?.sourceUrl}/>
                             </ImageContainer>
-                            <Text color={!visuallyImpairedModeWhiteTheme ? 'white' : 'black'} width={!images ? '100%' : '50%'} rightText={rightText}>
+                            <Text color={!visuallyImpairedModeWhiteTheme ? 'white' : 'black'}  rightText={rightText}>
                                 <StyledTextComponent
                                     offBorder={!images}
                                     title={props.title}

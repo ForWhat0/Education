@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {device} from "../deviceSizes/deviceSizes";
 
-export const Modal = styled.div`
+export const StyledModal = styled.div`
     position: fixed;
     top:0;
     left: 0;
@@ -44,8 +44,8 @@ export const Modal = styled.div`
     
     h2{
     position: absolute;
-    top: 3%;
-    right: 10%;
+    top: 2%;
+    right: 7%;
     cursor: pointer;
     }
     

@@ -4,17 +4,17 @@ import StyledLoader from "../../src/components/loader/loader";
 import {TitleForComponent} from "../../src/components/titleForComponent/title";
 import styled from "styled-components";
 import {MainLayout} from "../../src/components/layouts/mainLayout";
-import React from "react";
+import { useState } from "react";
 import GET_ALL_SLUG_FROM_SERVICES from "../../src/queries/get_all_slug_from_services";
-import {formatBytes, getDateIn_DD_MM_YYYY_Format, ParcMenu} from "../../src/components/hooks/hooks";
+import {ParcMenu} from "../../src/components/hooks/hooks";
 import GET_SERVICE_BY_SLUG from "../../src/queries/get_serviceby_slug";
 import {Link as ScrollLink} from "react-scroll";
 import {StyledButton} from "../../src/components/button/button";
 import {PostBodyZNO} from "../../src/components/post-body/post-body";
-import Icon from "../../src/components/icon/icon";
 import {device} from "../../src/components/deviceSizes/deviceSizes";
 import {services} from "../../src/Lsi/lsi";
-const { useState } = React;
+import {useDispatch} from "react-redux";
+import {actionClickModal} from "../../src/redux/actions/actions";
 
  const Container = styled.div`
  width:80%;
@@ -28,34 +28,7 @@ background: url(${props=>props.bgImg}) no-repeat center center fixed;
   }
 
 `
-const ContainerWrapper = styled.div`
-position:relative;
-width:80%;
-  margin-top:40px;
-margin-left:10%;   
-@media screen and (max-width:700px) {
-       width: 90%;
-    margin-left: 4%;
-  }
-h1{
-@media screen and (max-width:700px) {
-   font-size:25px;
-  }
-}  
-  
-a{
-display:flex;
-align-items: center;
-}
 
-span{
-margin-left:10px;
-margin-right:10px;
-color:blue;
-border-bottom:1px solid blue;
-} 
-
-`
 const LoaderContainer = styled.div`
                 width: 100%;
                 display:flex;
@@ -64,38 +37,12 @@ const LoaderContainer = styled.div`
                 margin-bottom: 70px;
 `
 
-const Icons = styled.div`
-    width: 100%;
-    justify-content: flex-end;
-display:flex;
-align-items:center;
-@media screen and (max-width:700px) {
-    flex-direction: column;
-    justify-content: unset;
-    align-items:unset;
-  }
-`
-const IconItem = styled.div`
-margin-left:${props=>props.marginR};
-@media screen and (max-width:700px) {
-    margin-left:unset;
-    margin-bottom:10px;
-  }
-`
 
-
-
-
-const DownloadItem = styled.a`
-display:flex;
- @media screen and (max-width:700px) {
-  margin-bottom:60px;
-  }
-`
 const Header = styled.div`
 display:flex;
 align-items: center;
 position:relative;
+margin-bottom: 30px;
 
 div{
 position:absolute;
@@ -115,16 +62,7 @@ div a button{
   flex-direction:column;
   }
 `
-const Input = styled.div`
-position:absolute;
-right:0;
-@media screen and (max-width:950px) {
- width:100%;
- right:unset;
- position:relative;
- margin-bottom:40px;
-  }
-`
+
 const Year = styled.span`
 font-size:16px;
 border-bottom: 1px solid #1D1D1B;
@@ -202,7 +140,14 @@ export default function GetEvent({serviceBySlug,menu,contacts,locale}) {
             </MainLayout>
         )
     }
+    const dispatch = useDispatch()
 
+    function mapDispatchToProps(item) {
+        item.type='service'
+        item.title=item.titleAccardion
+        item.databaseId=serviceBySlug.databaseId
+        return dispatch(actionClickModal(item))
+    }
     return (
         <MainLayout
             databaseId={serviceBySlug?.databaseId}
@@ -227,13 +172,13 @@ export default function GetEvent({serviceBySlug,menu,contacts,locale}) {
                 }
                 {
                     serviceBySlug?.serveicesFields?.accardion2?.map((item,index)=>
-                        <>
+                        <div key={index}>
                             <Year
                                 pBottom = {ShownAccordion[index] ? 'unset' : '20px' }
                                 open ={ShownAccordion[index] ? '180deg' : '0' }
                                 onClick={() => handleClickAccordion(index)}>
                                 {item.titleAccardion}
-                                <i className="fa fa-caret-down"></i>
+                                <i className="fa fa-caret-down"/>
                             </Year>
 
                             <DownloadContent
@@ -246,9 +191,9 @@ export default function GetEvent({serviceBySlug,menu,contacts,locale}) {
                                 <div
                                     dangerouslySetInnerHTML={{ __html: item.descrAccardion }}
                                     />
-                                    <StyledButton text={services.register[locale]}/>
+                                    <StyledButton func={()=>mapDispatchToProps(item)} text={services.register[locale]}/>
                             </DownloadContent>
-                        </>
+                        </div>
                     )
                 }
             </Container>

@@ -1,35 +1,34 @@
-import Head from "next/head";
+import Head from 'next/head'
 import {StyledLeftComment} from "../leftComment/leftComment"
-import {useDispatch, useSelector} from "react-redux"
-import {Alert} from "../alert/alert"
+import { useDispatch, useSelector} from "react-redux"
 import Menu from "../burgerMenu/menu";
-import React, {useEffect, useRef} from 'react';
+import {useEffect, useRef} from 'react';
 
 import {
-    main,
-    ShowWindowDimensions,
     useOnClickOutside,
-    useWindowSize,
     WindowDimensionsOffVisuallyImpaired
 } from '../hooks/hooks';
 import {actionClickBurger, OnchangeInputSearchNews} from "../../redux/actions/actions";
-import {ModalRegisterEvent} from "../modal/modalRegistOnEvent";
+
 import {PageFooter} from "../footer/footer";
 import {StyledRegisterZNO} from "../leftComment/registerOnZNO";
 import {Element} from "react-scroll";
-import {bubbling} from '../bubbling/bubbling'
-import styled from 'styled-components'
+
+
 import NewsWrapper from "../news/newsWrapper";
 import StyledLoader from "../loader/loader";
 import {LoaderContainer} from "../../../pages/calendar";
-import {calendarLsi, NewsLsi} from "../../Lsi/lsi";
+import { NewsLsi} from "../../Lsi/lsi";
 import {useRouter} from "next/router";
 import {Container} from "../../../pages/news";
 import {RouterLink} from "../routerLink/routerLink";
+import { Modal } from "../modal/modal";
+import {BubbleBg} from "../bubbleBg/bubbleBg";
+
 
 
 export  const Layout = ({showLinks,databaseId,contacts,menu,hideLeftComponent,children , header,showZNORegister}) => {
-
+    const {visuallyImpairedMode} = useSelector(state=>state.app)
     const router = useRouter()
     const locale = router.locale
     const pathname = router.pathname
@@ -39,11 +38,10 @@ export  const Layout = ({showLinks,databaseId,contacts,menu,hideLeftComponent,ch
     const {inputNewsByTitle} = useSelector(state=>state.news)
     const {newsByTitle} = useSelector(state=>state.news)
     const {fontSize} = useSelector(state=>state.app)
-    /*  bubbling(visuallyImpairedMode)*/
+
     const node = useRef();
     const {menuBurgerIsOpen} = useSelector(state=>state.app)
     useOnClickOutside(node,  () => menuBurgerIsOpen === true  &&  dispatch(actionClickBurger()));
-    const {alert} = useSelector(state=>state.app)
 
     WindowDimensionsOffVisuallyImpaired()
     useEffect(()=>{
@@ -58,16 +56,19 @@ export  const Layout = ({showLinks,databaseId,contacts,menu,hideLeftComponent,ch
                 <title>{contacts?.titleSite}</title>
             </Head>
 
-            {alert && <Alert/>}
-            <ModalRegisterEvent/>
+            <Modal/>
 
                 <div  ref={node}>
                     {header}
                     <Menu menu={menu}/>
                 </div>
             {
+                !visuallyImpairedMode && <BubbleBg/>
+            }
+            {
                 showLinks && <RouterLink/>
             }
+
                 {
                     inputNewsByTitle.length ?
 
@@ -86,11 +87,13 @@ export  const Layout = ({showLinks,databaseId,contacts,menu,hideLeftComponent,ch
                                   <NewsWrapper posts={newsByTitle}/>
                               </Container>
                    :
-                              <div style={{textAlign:'center',margin:'50px 0 50px 0'}}>
+                              <div
+                                   style={{textAlign:'center',margin:'50px 0 50px 0'}}
+                              >
                                   <h1>{NewsLsi.notExist[locale]}</h1>
                                   <h2
-                                      style={{borderBottom:'1px solid',paddingBottom:'10px',display: 'inline',cursor:'pointer'}}
                                       onClick={()=>dispatch(OnchangeInputSearchNews(''))}
+                                      style={{borderBottom:'1px solid',paddingBottom:'10px',display: 'inline',cursor:'pointer'}}
                                   >
                                       {NewsLsi.cleanInput[locale]}
                                   </h2>

@@ -1,8 +1,7 @@
-import React, {useEffect,useState} from 'react'
-import {useDispatch, useSelector} from "react-redux"
+import  {useEffect,useState} from 'react'
+import { useSelector} from "react-redux"
 import styled from 'styled-components'
 import {app} from '../../Lsi/lsi'
-import {ChangeLanguage} from "../../redux/actions/actions"
 import {useRouter} from "next/router";
 import Link from "next/link";
 
@@ -53,7 +52,7 @@ margin:5px 0 0 0;
 padding:5px 0 5px 0;
 flex-direction:column;
 list-style-type:none;
-border:${props=>props.border};
+box-shadow: 0px 0px 20px rgba(29,29,27,0.2);
 display:${props=>props.open};
 text-align:center;
 
@@ -69,7 +68,7 @@ display: block;
 }
 
 `
-export const ChangeLanguageSelector=({theme,navMain,globeDarkIcon})=>{
+export const ChangeLanguageSelector=({theme,globeDarkIcon})=>{
     const router = useRouter()
     let locale =  router.locale
     const {visuallyImpairedMode} = useSelector(state=>state.app)
@@ -81,7 +80,7 @@ export const ChangeLanguageSelector=({theme,navMain,globeDarkIcon})=>{
     const visuallyModeIcon =   theme ? "/changeLanguageVisyalMode.svg" : globeDarkIcon ? "/changeLanguageVisyalMode.svg" : "/changeLanguageVisyalModeWhite.svg"
     const [localeState, setLocaleState] = useState(languages[router.locale])
     const [open, setOpen] = useState(false)
-    const border = navMain || visuallyModeIcon ? '1px solid black' : 'unset'
+
 
     useEffect(
         ()=>setLocaleState(languages[locale]),
@@ -93,9 +92,9 @@ export const ChangeLanguageSelector=({theme,navMain,globeDarkIcon})=>{
                 <Content color={!visuallyImpairedModeWhiteTheme ? 'white' :color} onClick={()=>setOpen(!open)} url={!visuallyImpairedModeWhiteTheme ? '/changeLanguageVisyalModeWhite.svg' : visuallyImpairedMode ? visuallyModeIcon :  globeIcon} open ={open ? '180deg' : '0' }>
                     <div />
                     <li>{localeState}</li>
-                    <i className="fa fa-caret-down"></i>
+                    <i className="fa fa-caret-down"/>
                 </Content>
-                <DropDownContent border={border} open ={open ? 'block' : 'none' }>
+                <DropDownContent  open ={open ? 'block' : 'none' }>
                     {router.locales.map((locale) => (
                         <li onClick={()=>setOpen(false)}   key={locale} >
                             <Link scroll={false} href={router.asPath} locale={locale}>

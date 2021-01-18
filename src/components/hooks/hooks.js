@@ -162,6 +162,9 @@ export const  WindowDimensionsOffVisuallyImpaired=() =>{
         width !== 0 && width < 1024 && dispatch(ClickVisuallyImpairedModeOff())
         ,[width])
 }
+export const  firstChartToUpperCase=(string) =>{
+    return string.charAt(0).toUpperCase() + string.slice(1)
+}
 
 export const registerOnEventHook = async (eventName,time, fName, lName) => {
     const eventTime = `${format(time, "HH")}:${format(time, "mm")}`
@@ -266,4 +269,27 @@ export const registerZnoHook = async ( name,phone,email,comment,learn ) => {
         return error
     }
 }
+export const registerOnServiceHook = async ( serviceName,fName,lName,phone ) => {
+    const data = {
+        serviceName,
+        fName,
+        lName,
+        phone
+    }
 
+    try {
+        const res = await axios({
+            method: "post",
+            url: "/api/registerOnService",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json, text/plain, */*",
+            },
+            data
+        })
+        return res
+
+    } catch (error) {
+        return error
+    }
+}

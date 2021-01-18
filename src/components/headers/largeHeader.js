@@ -1,24 +1,22 @@
-import React from "react"
 import {
     HeaderWrapper,
     WrapperInner,
     Main,
     NavBar,
     Footer,
-    LogoImgMain,
     NavBarVisuallyImpaired
 } from './headerStyledElements'
 import {headerLsi} from '../../Lsi/lsi'
 import { useSelector} from "react-redux"
 import {useRouter} from "next/router";
-const {navButtons,register,logIn,title,subtitle,inputPlaceholder} = headerLsi
+const {register,logIn,subtitle,inputPlaceholder} = headerLsi
 
 export default function LargeHeader({menu,contacts,title}) {
     const router = useRouter()
     const locale = router.locale
     const {visuallyImpairedMode} = useSelector(state=>state.app)
     return (
-        <HeaderWrapper background={visuallyImpairedMode ? 'none' : 'url(https://epo.org.ua/wp-content/uploads/2020/11/diia_gradient_03.png)'}>
+        <HeaderWrapper background={visuallyImpairedMode ? 'none' : 'url(/diia_gradient_03.webp)'}>
             <WrapperInner>
                 <NavBarVisuallyImpaired display={visuallyImpairedMode ? 'flex' : 'none'} locale={locale}/>
                 <NavBar
