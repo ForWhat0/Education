@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cb6ac071-4720-4735-b0d5-4b400d9d84c9" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="header-in-progress" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1krzTmQavfEBc5WrSKo2KEspwnp" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\opens_erver\OSPanel\domains\education-app\components" />
+      <recent name="D:\opens_erver\OSPanel\domains\education-app\pages\projects" />
+      <recent name="D:\opens_erver\OSPanel\domains\education-app\public" />
+      <recent name="D:\opens_erver\OSPanel\domains\education-app\redux\reducers" />
+      <recent name="D:\opens_erver\OSPanel\domains\education-app\public\favicon" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\opens_erver\OSPanel\domains\education-app\components\layouts" />
+      <recent name="D:\opens_erver\OSPanel\domains\education-app\components\projects" />
+      <recent name="D:\opens_erver\OSPanel\domains\education-app\components\button" />
+      <recent name="D:\opens_erver\OSPanel\domains\education-app\components\icon" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cb6ac071-4720-4735-b0d5-4b400d9d84c9" name="Default Changelist" comment="" />
+      <created>1606473508578</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606473508578</updated>
+      <workItem from="1606473512597" duration="18280000" />
+      <workItem from="1606654359846" duration="104098000" />
+      <workItem from="1606954036582" duration="28802000" />
+      <workItem from="1607066478013" duration="16612000" />
+      <workItem from="1607170232900" duration="1217000" />
+      <workItem from="1607186225370" duration="5128000" />
+      <workItem from="1607280003626" duration="63794000" />
+      <workItem from="1607589052186" duration="5799000" />
+      <workItem from="1607733265291" duration="3967000" />
+      <workItem from="1607909034716" duration="2104000" />
+      <workItem from="1607986602051" duration="7101000" />
+      <workItem from="1608338308728" duration="906000" />
+      <workItem from="1610928195477" duration="69000" />
+      <workItem from="1610929484697" duration="1110000" />
+    </task>
+    <task id="LOCAL-00001" summary="deploy">
+      <created>1606821070051</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606821070051</updated>
+    </task>
+    <task id="LOCAL-00002" summary="it is work well">
+      <created>1606897677568</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606897677568</updated>
+    </task>
+    <task id="LOCAL-00003" summary="all news done">
+      <created>1606916764510</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606916764510</updated>
+    </task>
+    <task id="LOCAL-00004" summary="you can do merge from here">
+      <created>1607005283013</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607005283013</updated>
+    </task>
+    <task id="LOCAL-00005" summary="you can do merge from here">
+      <created>1610930415765</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610930415765</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="deploy" />
+    <MESSAGE value="it is work well" />
+    <MESSAGE value="all news done" />
+    <MESSAGE value="you can do merge from here" />
+    <option name="LAST_COMMIT_MESSAGE" value="you can do merge from here" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="1" key="CommitChangelistDialog2" timestamp="1610930412267">
+      <screen x="0" y="0" width="1470" height="864" />
+    </state>
+    <state x="361" y="1" key="CommitChangelistDialog2/0.0.1470.864@0.0.1470.864" timestamp="1610930412267" />
+    <state x="362" y="1" key="CommitChangelistDialog2/0.0.1474.864@0.0.1474.864" timestamp="1607005270536" />
+    <state x="511" y="187" key="FileChooserDialogImpl" timestamp="1607994063937">
+      <screen x="0" y="0" width="1453" height="864" />
+    </state>
+    <state x="511" y="187" key="FileChooserDialogImpl/0.0.1453.864@0.0.1453.864" timestamp="1607994063937" />
+    <state x="515" y="187" key="FileChooserDialogImpl/0.0.1465.864@0.0.1465.864" timestamp="1607378426578" />
+    <state x="518" y="187" key="FileChooserDialogImpl/0.0.1474.864@0.0.1474.864" timestamp="1607172352145" />
+    <state width="1449" height="224" key="GridCell.Tab.0.bottom" timestamp="1610929986394">
+      <screen x="0" y="0" width="1470" height="864" />
+    </state>
+    <state width="1449" height="224" key="GridCell.Tab.0.bottom/0.0.1470.864@0.0.1470.864" timestamp="1610929986394" />
+    <state width="1453" height="224" key="GridCell.Tab.0.bottom/0.0.1474.864@0.0.1474.864" timestamp="1607220721387" />
+    <state width="1449" height="224" key="GridCell.Tab.0.center" timestamp="1610929986394">
+      <screen x="0" y="0" width="1470" height="864" />
+    </state>
+    <state width="1449" height="224" key="GridCell.Tab.0.center/0.0.1470.864@0.0.1470.864" timestamp="1610929986394" />
+    <state width="1453" height="224" key="GridCell.Tab.0.center/0.0.1474.864@0.0.1474.864" timestamp="1607220721387" />
+    <state width="1449" height="224" key="GridCell.Tab.0.left" timestamp="1610929986394">
+      <screen x="0" y="0" width="1470" height="864" />
+    </state>
+    <state width="1449" height="224" key="GridCell.Tab.0.left/0.0.1470.864@0.0.1470.864" timestamp="1610929986394" />
+    <state width="1453" height="224" key="GridCell.Tab.0.left/0.0.1474.864@0.0.1474.864" timestamp="1607220721387" />
+    <state width="1449" height="224" key="GridCell.Tab.0.right" timestamp="1610929986394">
+      <screen x="0" y="0" width="1470" height="864" />
+    </state>
+    <state width="1449" height="224" key="GridCell.Tab.0.right/0.0.1470.864@0.0.1470.864" timestamp="1610929986394" />
+    <state width="1453" height="224" key="GridCell.Tab.0.right/0.0.1474.864@0.0.1474.864" timestamp="1607220721387" />
+    <state x="329" y="152" key="Vcs.Push.Dialog.v2" timestamp="1610930427883">
+      <screen x="0" y="0" width="1470" height="864" />
+    </state>
+    <state x="329" y="152" key="Vcs.Push.Dialog.v2/0.0.1470.864@0.0.1470.864" timestamp="1610930427883" />
+    <state x="330" y="152" key="Vcs.Push.Dialog.v2/0.0.1474.864@0.0.1474.864" timestamp="1607005287290" />
+    <state x="93" y="93" width="1288" height="678" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1606897617512">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="93" y="93" width="1288" height="678" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1474.864@0.0.1474.864" timestamp="1606897617512" />
+    <state x="93" y="93" width="1288" height="678" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1607085963625">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="93" y="93" width="1288" height="678" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1474.864@0.0.1474.864" timestamp="1607085963625" />
+    <state x="447" y="165" width="579" height="534" key="find.popup" timestamp="1606862301113">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="447" y="165" width="579" height="534" key="find.popup/0.0.1474.864@0.0.1474.864" timestamp="1606862301113" />
+    <state x="517" y="145" key="git4idea.branch.GitSmartOperationDialog" timestamp="1610929515518">
+      <screen x="0" y="0" width="1470" height="864" />
+    </state>
+    <state x="517" y="145" key="git4idea.branch.GitSmartOperationDialog/0.0.1470.864@0.0.1470.864" timestamp="1610929515518" />
+    <state x="394" y="197" key="run.anything.popup" timestamp="1606910527617">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="394" y="197" key="run.anything.popup/0.0.1474.864@0.0.1474.864" timestamp="1606910527617" />
+    <state x="400" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1606720157865">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="400" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1474.864@0.0.1474.864" timestamp="1606720157865" />
+  </component>
+</project>
