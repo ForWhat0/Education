@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb6ac071-4720-4735-b0d5-4b400d9d84c9" name="Default Changelist" comment="hkg">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="cb6ac071-4720-4735-b0d5-4b400d9d84c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +22,21 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="hkg">
+      <created>1610994933676</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610994933676</updated>
+    </task>
+    <task id="LOCAL-00002" summary="hkg">
+      <created>1610995208130</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610995208130</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -35,9 +47,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="hkg" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="360" y="1" key="CommitChangelistDialog2" timestamp="1610994602444">
+    <state x="360" y="1" key="CommitChangelistDialog2" timestamp="1610995206228">
       <screen x="0" y="0" width="1470" height="864" />
     </state>
-    <state x="360" y="1" key="CommitChangelistDialog2/0.0.1470.864@0.0.1470.864" timestamp="1610994602444" />
+    <state x="360" y="1" key="CommitChangelistDialog2/0.0.1470.864@0.0.1470.864" timestamp="1610995206228" />
+    <state x="328" y="152" key="Vcs.Push.Dialog.v2" timestamp="1610995223191">
+      <screen x="0" y="0" width="1470" height="864" />
+    </state>
+    <state x="328" y="152" key="Vcs.Push.Dialog.v2/0.0.1470.864@0.0.1470.864" timestamp="1610995223191" />
   </component>
 </project>
