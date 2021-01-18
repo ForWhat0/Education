@@ -1,22 +1,35 @@
-import App from 'next/app'
-import React from 'react'
+import React from "react"
 import {Provider} from 'react-redux'
 import {createWrapper} from 'next-redux-wrapper'
-import store from "../redux/store/store"
-import '../styles/index.css'
+import store from "../src/redux/store/store"
+import '../styles/globals.css'
+import '../styles/calendar.css'
+import 'swiper/swiper.scss'
+import Router from 'next/router'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import {ApolloProvider} from "@apollo/client";
+import client from "../src/apollo/client";
+import {ApolloProvider as ApolloHooksProvider} from "react-apollo-hooks/lib/ApolloContext";
+import Head from "next/head";
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-class MyApp extends App{
+Router.events.on('routeChangeStart', () => NProgress.start())
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
 
-    render(){
-        const { Component, pageProps } = this.props
-        return(
-            <Provider store={store}>
-                <Component {...pageProps}>
-
-                </Component>
-            </Provider>
-        )
-    }
+function MyApp({ Component, pageProps }) {
+    const router = useRouter()
+  return (
+      <ApolloProvider client={client}>
+          <ApolloHooksProvider client={client}>
+      <Provider store={store}>
+            <Component {...pageProps} />
+      </Provider>
+          </ApolloHooksProvider>
+      </ApolloProvider>
+  )
 }
 
 const makeStore = ()=> store
