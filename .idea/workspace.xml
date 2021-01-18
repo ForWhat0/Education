@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb6ac071-4720-4735-b0d5-4b400d9d84c9" name="Default Changelist" comment="" />
+    <list default="true" id="cb6ac071-4720-4735-b0d5-4b400d9d84c9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/report.20210111.192609.4944.0.001.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/button/animationButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/appeal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/appeal/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/calendar/[currentHourId].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/calendar/[currentHourId].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/calendar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/calendar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/news/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/news/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/service/[slug].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/service/[slug].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report.20210105.011910.13512.0.001.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report.20210105.172356.4120.0.001.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lsi/lsi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lsi/lsi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/bubleee.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/button.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/events/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/events/events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer/footerStyled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer/footerStyled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/headers/changeLanguageSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/headers/changeLanguageSelector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/headers/headerStyledElements.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/headers/headerStyledElements.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hooks/hooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/hooks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/input/input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/input.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/mainLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/mainLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/leftComment/leftComment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/leftComment/leftComment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/leftComment/registerOnZNO.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/leftComment/registerOnZNO.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/modalRegistOnEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/modalRegistOnEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/modalStyled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/modalStyled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pagination/paginationStyled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination/paginationStyled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/projects/projectWrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/projects/projectWrapper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/projects/projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/projects/projects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/searchBar/animationSearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchBar/animationSearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/searchBar/searchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchBar/searchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sendButton/sendButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sendButton/sendButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/services/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/services/services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/team/team.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/team/team.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/time/time.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/time/time.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/queries/pages/get-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/queries/pages/get-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/appReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/appReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/newsReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/newsReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/calendar.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +75,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -76,7 +121,7 @@
       <workItem from="1607986602051" duration="7101000" />
       <workItem from="1608338308728" duration="906000" />
       <workItem from="1610928195477" duration="69000" />
-      <workItem from="1610929484697" duration="1110000" />
+      <workItem from="1610929484697" duration="2845000" />
     </task>
     <task id="LOCAL-00001" summary="deploy">
       <created>1606821070051</created>
@@ -113,13 +158,28 @@
       <option name="project" value="LOCAL" />
       <updated>1610930415765</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="you can do merge from here">
+      <created>1610930759266</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610930759266</updated>
+    </task>
+    <task id="LOCAL-00007" summary="you can do merge from here">
+      <created>1610930776265</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1610930776265</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="deploy" />
     <MESSAGE value="it is work well" />
     <MESSAGE value="all news done" />
@@ -127,10 +187,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="you can do merge from here" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="1" key="CommitChangelistDialog2" timestamp="1610930412267">
+    <state x="361" y="1" key="CommitChangelistDialog2" timestamp="1610930774723">
       <screen x="0" y="0" width="1470" height="864" />
     </state>
-    <state x="361" y="1" key="CommitChangelistDialog2/0.0.1470.864@0.0.1470.864" timestamp="1610930412267" />
+    <state x="361" y="1" key="CommitChangelistDialog2/0.0.1470.864@0.0.1470.864" timestamp="1610930774723" />
     <state x="362" y="1" key="CommitChangelistDialog2/0.0.1474.864@0.0.1474.864" timestamp="1607005270536" />
     <state x="511" y="187" key="FileChooserDialogImpl" timestamp="1607994063937">
       <screen x="0" y="0" width="1453" height="864" />
@@ -138,30 +198,30 @@
     <state x="511" y="187" key="FileChooserDialogImpl/0.0.1453.864@0.0.1453.864" timestamp="1607994063937" />
     <state x="515" y="187" key="FileChooserDialogImpl/0.0.1465.864@0.0.1465.864" timestamp="1607378426578" />
     <state x="518" y="187" key="FileChooserDialogImpl/0.0.1474.864@0.0.1474.864" timestamp="1607172352145" />
-    <state width="1449" height="224" key="GridCell.Tab.0.bottom" timestamp="1610929986394">
+    <state width="1449" height="224" key="GridCell.Tab.0.bottom" timestamp="1610932204280">
       <screen x="0" y="0" width="1470" height="864" />
     </state>
-    <state width="1449" height="224" key="GridCell.Tab.0.bottom/0.0.1470.864@0.0.1470.864" timestamp="1610929986394" />
+    <state width="1449" height="224" key="GridCell.Tab.0.bottom/0.0.1470.864@0.0.1470.864" timestamp="1610932204280" />
     <state width="1453" height="224" key="GridCell.Tab.0.bottom/0.0.1474.864@0.0.1474.864" timestamp="1607220721387" />
-    <state width="1449" height="224" key="GridCell.Tab.0.center" timestamp="1610929986394">
+    <state width="1449" height="224" key="GridCell.Tab.0.center" timestamp="1610932204280">
       <screen x="0" y="0" width="1470" height="864" />
     </state>
-    <state width="1449" height="224" key="GridCell.Tab.0.center/0.0.1470.864@0.0.1470.864" timestamp="1610929986394" />
+    <state width="1449" height="224" key="GridCell.Tab.0.center/0.0.1470.864@0.0.1470.864" timestamp="1610932204280" />
     <state width="1453" height="224" key="GridCell.Tab.0.center/0.0.1474.864@0.0.1474.864" timestamp="1607220721387" />
-    <state width="1449" height="224" key="GridCell.Tab.0.left" timestamp="1610929986394">
+    <state width="1449" height="224" key="GridCell.Tab.0.left" timestamp="1610932204280">
       <screen x="0" y="0" width="1470" height="864" />
     </state>
-    <state width="1449" height="224" key="GridCell.Tab.0.left/0.0.1470.864@0.0.1470.864" timestamp="1610929986394" />
+    <state width="1449" height="224" key="GridCell.Tab.0.left/0.0.1470.864@0.0.1470.864" timestamp="1610932204280" />
     <state width="1453" height="224" key="GridCell.Tab.0.left/0.0.1474.864@0.0.1474.864" timestamp="1607220721387" />
-    <state width="1449" height="224" key="GridCell.Tab.0.right" timestamp="1610929986394">
+    <state width="1449" height="224" key="GridCell.Tab.0.right" timestamp="1610932204280">
       <screen x="0" y="0" width="1470" height="864" />
     </state>
-    <state width="1449" height="224" key="GridCell.Tab.0.right/0.0.1470.864@0.0.1470.864" timestamp="1610929986394" />
+    <state width="1449" height="224" key="GridCell.Tab.0.right/0.0.1470.864@0.0.1470.864" timestamp="1610932204280" />
     <state width="1453" height="224" key="GridCell.Tab.0.right/0.0.1474.864@0.0.1474.864" timestamp="1607220721387" />
-    <state x="329" y="152" key="Vcs.Push.Dialog.v2" timestamp="1610930427883">
+    <state x="329" y="152" key="Vcs.Push.Dialog.v2" timestamp="1610930777860">
       <screen x="0" y="0" width="1470" height="864" />
     </state>
-    <state x="329" y="152" key="Vcs.Push.Dialog.v2/0.0.1470.864@0.0.1470.864" timestamp="1610930427883" />
+    <state x="329" y="152" key="Vcs.Push.Dialog.v2/0.0.1470.864@0.0.1470.864" timestamp="1610930777860" />
     <state x="330" y="152" key="Vcs.Push.Dialog.v2/0.0.1474.864@0.0.1474.864" timestamp="1607005287290" />
     <state x="93" y="93" width="1288" height="678" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1606897617512">
       <screen x="0" y="0" width="1474" height="864" />

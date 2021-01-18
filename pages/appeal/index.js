@@ -5,7 +5,7 @@ import GET_NEWS from "../../src/queries/getNews";
 import GET_MENU_AND_CONTACTS from "../../src/queries/getMenuAndContacts";
 import {MainLayout} from "../../src/components/layouts/mainLayout";
 import React, {useState} from "react";
-import {ParcMenu} from "../../src/components/hooks/hooks";
+import {ParcMenu, registerOnEventHook, sendAppeal, sendMail} from "../../src/components/hooks/hooks";
 import {InputStyled} from "../../src/components/input/input";
 import {appeal, leftComment, leftCommentZno} from "../../src/Lsi/lsi";
 import {InputsFields, Label, Select} from "../../src/components/leftComment/leftCommentStyLedComponents";
@@ -152,48 +152,64 @@ export default function  Appeal({locale,contacts,menu,appeals}){
     const parsedMenu = ParcMenu(menu)
     const [name, setName] = useState('')
     const [lastName, setLastName] = useState('')
+    const [phone, setPhone] = useState('')
     const [reason, setReason] = useState('')
     const dispatch = useDispatch()
-    const content = `
-        <ul>
-        <li>${name}</li>
-          <li>${lastName}</li>
-        <li>${reason}</li>
-        <uk/>
+
+
+    const registerOnEvent = async (event) => {
+        event.preventDefault()
+        if ( name && lastName  && phone && reason ){
+            if (phone.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)) {
+                sendWordpress()
+                await sendAppeal( name,lastName,reason,phone )
+            }
+          else {
+                dispatch(ShowAlert(leftComment.errors.wrongPhoneNumber[locale], 'error'))
+            }
+
+        }
+        else {
+            dispatch(ShowAlert(leftComment.errors.emptyFields[locale], 'error'))
+        }
+    }
+    const content =
         `
-    let [ send, {  data, error, loading }] = useMutation( SEND_COMMENT, {
+        <h1>Звернення</h1>
+        <ul>
+        <li>ім'я: ${name}</li>
+        <li>прізвище: ${lastName}</li>
+          <li>телефон: ${phone}</li>
+        <li>причина звернення: ${reason}</li>
+        <li>id: ${Math.random() + Math.random()}</li>
+        <ul/>
+        `
+    let [ sendWordpress, { data, error, loading }] = useMutation( SEND_COMMENT, {
         variables: {
             input:{
-                commentOn: 1,
-                author: name + lastName,
+                commentOn: 16688,
                 content:content
             }
         },
         onCompleted: () => {
             if ( !error ) {
+                setName('')
+                setLastName('')
                 dispatch(ShowAlert(leftComment.sent[locale],'success'))
             }
         },
         onError: ( error ) => {
             if ( error ) {
-                dispatch(ShowAlert(leftComment.duplicate[locale],'error'))
+                setName('')
+                setLastName('')
+                dispatch(ShowAlert(leftComment.sent[locale],'success'))
             }
         }
     } )
-    const handleSendClick = () => {
-        if (name && lastName && reason) {
-                    if (reason.length > 6) {
-                        send()
-                    } else {
-                        dispatch(ShowAlert(leftComment.errors.commentShort[locale], 'error'))
-                    }
-        } else {
-            dispatch(ShowAlert(leftComment.errors.emptyFields[locale], 'error'))
-        }
-    }
+
 
     return(
-        <MainLayout databaseId={1} contacts={contacts} menu={parsedMenu}>
+        <MainLayout databaseId={16688} contacts={contacts} menu={parsedMenu}>
             <Global >
                 <Title>
                     <TitleForComponent text={appeal.appeal[locale]}/>
@@ -208,13 +224,13 @@ export default function  Appeal({locale,contacts,menu,appeals}){
                         </Text>
                     </GrayBackground>
                     <Form>
-                        <InputStyled  text={appeal.name[locale]} onChange={e => setName(e.target.value)}  width='100%'/>
-                        <InputStyled text={appeal.lastName[locale]} onChange={e => setLastName(e.target.value)}  width='100%'/>
-                        <InputStyled maxlength='100'    width='100%'/>
+                        <InputStyled value={name}   text={appeal.name[locale]} onChange={e => setName(e.target.value)}  width='100%'/>
+                        <InputStyled  value={lastName}  text={appeal.lastName[locale]} onChange={e => setLastName(e.target.value)}  width='100%'/>
+                        <InputStyled  value={lastName}  text={appeal.phoneNumber[locale]} onChange={e => setPhone(e.target.value)}  width='100%'/>
                         <Label>
                             {appeal.reason[locale]}
                         </Label>
-                        <Select style={{marginBottom:'20px'}} onChange={e => setReason(e.target.value)}>
+                        <Select  style={{marginBottom:'20px'}} onChange={e => setReason(e.target.value)}>
                             <option hidden disabled selected value> </option>
                             {appeals?.map(less=>
                                 <option key={less.appealsText} value={less.appealsText}>{less.appealsText}</option>
@@ -223,11 +239,11 @@ export default function  Appeal({locale,contacts,menu,appeals}){
                         <SendButton
                             sentText={leftComment.sent[locale]}
                             sendText={leftComment.send[locale]}
-                            errorText={leftComment.error[locale]}
+                            errorText={leftComment.sent[locale]}
                             error={error}
                             done={data}
                             loading={loading}
-                            click={handleSendClick}
+                            click={registerOnEvent}
                             />
                     </Form>
                     <ThreadBottom/>
