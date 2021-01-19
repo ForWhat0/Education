@@ -140,7 +140,7 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
     const {visuallyImpairedMode} = useSelector(state=>state.app)
     const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
     const hoursEvent =  hoursOne?.hoursEvents?.hoursEvents &&  new Date(hoursOne.hoursEvents.hoursEvents)
-    const inputDate = new Date(hoursEvent)
+    const inputDate = hoursEvent
 
     const borderLeft = visuallyImpairedMode ? '#1D1D1B' : borderLeftColor
     const renderDay=()=>{
