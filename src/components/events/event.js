@@ -1,12 +1,11 @@
 import styled, {keyframes} from 'styled-components'
 import {device} from "../deviceSizes/deviceSizes";
-import format from 'date-fns/format'
-import isToday from "date-fns/isToday";
+import {format,isToday} from "date-fns";
 import {uk,enGB, ru} from "date-fns/locale";
 import {events} from "../../Lsi/lsi"
 import {useSelector} from "react-redux";
 import {StyledButton} from "../button/button";
-
+import {firstChartToUpperCase} from "../hooks/hooks";
 import {ReviewButton} from "../button/reviewButton";
 
 const opacity = keyframes`
@@ -140,9 +139,20 @@ display:none;
 export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
     const {visuallyImpairedMode} = useSelector(state=>state.app)
     const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
-    const inputDate = hoursOne?.hoursEvents?.hoursEvents ? new Date(hoursOne.hoursEvents.hoursEvents) : new Date()
+    const inputDate =new  Date()
     const borderLeft = visuallyImpairedMode ? '#1D1D1B' : borderLeftColor
-
+    const renderDay=()=>{
+        if(isToday(inputDate)){
+            return events.today[locale]
+        }
+        else{
+            return  firstChartToUpperCase(
+                format(
+                    inputDate,  "EEEE",{locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk}
+                )
+            )
+        }
+    }
 
     return (
             <EventContainer visuallyImpairedModeWhiteTheme={visuallyImpairedModeWhiteTheme} visuallyImpairedMode={visuallyImpairedMode}>
@@ -151,7 +161,7 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                        fontSize='40px !important'
                        fontWeight='bold'
                    >
-                    
+                       {inputDate.getDate()}
                    </TextField>
                    <MonthAndDay visuallyImpairedMode={visuallyImpairedMode}>
                        <TextField
@@ -160,9 +170,9 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                            fontWeight='500'
                        >
                            {
-
+                               firstChartToUpperCase(
                                    format(inputDate, "MMMM yyyy", {locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk})
-
+                               )
 
                            }
                        </TextField>
@@ -170,7 +180,7 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                            fontSize='16px'
                            fontWeight='100'
                        >
-
+                         {renderDay()}
                        </TextField>
                    </MonthAndDay>
                        <Time visuallyImpairedMode={visuallyImpairedMode}>
@@ -179,8 +189,7 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                                className="fa fa-clock-o"
                                aria-hidden="true"
                            />
-                         
-                           
+                           {`${format(inputDate, "HH")}:${format(inputDate, "mm")}`}
                        </Time>
                </TimeContainer>
                 <Text visuallyImpairedMode={visuallyImpairedMode} border={offBorder ? 'unset' : '1px solid'}>
