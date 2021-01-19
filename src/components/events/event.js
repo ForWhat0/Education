@@ -161,7 +161,7 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                        >
                            {
 
-                                   format(inputDate, "MMMM yyyy", {locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk})
+                                   format(new Date(), "MMMM yyyy", {locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk})
 
 
                            }
