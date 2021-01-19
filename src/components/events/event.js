@@ -1,6 +1,7 @@
 import styled, {keyframes} from 'styled-components'
 import {device} from "../deviceSizes/deviceSizes";
-import {format,isToday} from "date-fns";
+import format from "date-fns";
+import isToday from "date-fns";
 import {uk,enGB, ru} from "date-fns/locale";
 import {events} from "../../Lsi/lsi"
 import {useSelector} from "react-redux";
@@ -141,7 +142,18 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
     const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
     const inputDate = new Date(hoursOne?.hoursEvents?.hoursEvents ? hoursOne.hoursEvents.hoursEvents :new  Date())
     const borderLeft = visuallyImpairedMode ? '#1D1D1B' : borderLeftColor
-
+    const renderDay=()=>{
+        if(isToday(inputDate)){
+            return events.today[locale]
+        }
+        else{
+            return  firstChartToUpperCase(
+                format(
+                    inputDate,  "EEEE",{locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk}
+                )
+            )
+        }
+    }
 
     return (
             <EventContainer visuallyImpairedModeWhiteTheme={visuallyImpairedModeWhiteTheme} visuallyImpairedMode={visuallyImpairedMode}>
@@ -158,7 +170,12 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                            fontSize='16px'
                            fontWeight='500'
                        >
+                           {
+                               firstChartToUpperCase(
+                                   format(inputDate, "MMMM yyyy", {locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk})
+                               )
 
+                           }
                        </TextField>
                        <TextField
                            fontSize='16px'
@@ -173,7 +190,7 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                                className="fa fa-clock-o"
                                aria-hidden="true"
                            />
-
+                           {`${format(inputDate, "HH")}:${format(inputDate, "mm")}`}
                        </Time>
                </TimeContainer>
                 <Text visuallyImpairedMode={visuallyImpairedMode} border={offBorder ? 'unset' : '1px solid'}>
