@@ -48,7 +48,7 @@ border-left: ${props=>props.border};
 
 
 export default function CalendarEvent({offBorder,hoursOne}) {
-    
+
     const inputDate = hoursOne?.hoursEvents?.hoursEvents ?
         new Date(hoursOne.hoursEvents.hoursEvents.replace(/-/g, "/"))
         : new  Date()

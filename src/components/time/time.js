@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import PostBody from "../post-body/post-body"
 import {device} from "../deviceSizes/deviceSizes"
-import { format } from "date-fns"
+import  format from "date-fns/format"
 import {enGB, ru, uk} from "date-fns/locale"
 import {firstChartToUpperCase} from "../hooks/hooks";
 

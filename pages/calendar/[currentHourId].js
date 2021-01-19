@@ -107,7 +107,7 @@ const LoaderContainer = styled.div`
 export default function EventCalendar({locale,contacts,loading,time,menu,allDates}) {
     const calendar = useRef();
     const parsedMenu = ParcMenu(menu)
-    const timeFormatted = new Date(time.hoursEvents?.hoursEvents)
+    const timeFormatted = new Date(time.hoursEvents?.hoursEvents.replace(/-/g, "/"))
     const [value, onChange] = useState(timeFormatted)
     const router = useRouter()
     const [calendarOpen, setCalendarOpen] = useState(false);
