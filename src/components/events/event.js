@@ -1,7 +1,7 @@
 import styled, {keyframes} from 'styled-components'
 import {device} from "../deviceSizes/deviceSizes";
-import format from "date-fns";
-import isToday from "date-fns";
+import format from 'date-fns/format'
+import isToday from "date-fns/isToday";
 import {uk,enGB, ru} from "date-fns/locale";
 import {events} from "../../Lsi/lsi"
 import {useSelector} from "react-redux";
