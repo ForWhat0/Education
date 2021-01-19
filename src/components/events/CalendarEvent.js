@@ -1,5 +1,5 @@
 import styled, {keyframes} from 'styled-components'
-import {format} from "date-fns";
+import format from "date-fns/format";
 import {useSelector} from "react-redux";
 
 const opacity = keyframes`
@@ -49,7 +49,7 @@ border-left: ${props=>props.border};
 
 export default function CalendarEvent({offBorder,hoursOne}) {
 
-    const inputDate = new Date(hoursOne?.hoursEvents?.hoursEvents)
+    const inputDate = new Date(hoursOne?.hoursEvents?.hoursEvents.replace(/-/g, "/"))
     const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
 
     return (
