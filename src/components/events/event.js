@@ -1,6 +1,7 @@
 import styled, {keyframes} from 'styled-components'
 import {device} from "../deviceSizes/deviceSizes";
-import {format,isToday} from "date-fns";
+import format from "date-fns/format";
+import isToday from "date-fns/isToday";
 import {uk,enGB, ru} from "date-fns/locale";
 import {events} from "../../Lsi/lsi"
 import {useSelector} from "react-redux";
@@ -139,8 +140,8 @@ display:none;
 export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
     const {visuallyImpairedMode} = useSelector(state=>state.app)
     const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
-    const inputDate = hoursOne?.hoursEvents?.hoursEvents &&  new Date(hoursOne.hoursEvents.hoursEvents)
-
+    const inputDate =  hoursOne?.hoursEvents?.hoursEvents &&
+        new Date(format(new Date(hoursOne.hoursEvents.hoursEvents), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"))
     const borderLeft = visuallyImpairedMode ? '#1D1D1B' : borderLeftColor
     const renderDay=()=>{
         if(isToday(inputDate)){
