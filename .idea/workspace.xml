@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4e80e7b4-ef69-449b-b706-cf8fba7ba260" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/pages/calendar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/calendar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/events/CalendarEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/events/CalendarEvents.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +66,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611060168682</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="gh">
+      <created>1611060751315</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1611060751315</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -73,13 +81,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="gh" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="360" y="1" key="CommitChangelistDialog2" timestamp="1611060166617">
+    <state x="360" y="1" key="CommitChangelistDialog2" timestamp="1611060749027">
       <screen x="0" y="0" width="1470" height="864" />
     </state>
-    <state x="360" y="1" key="CommitChangelistDialog2/0.0.1470.864@0.0.1470.864" timestamp="1611060166617" />
-    <state x="328" y="152" key="Vcs.Push.Dialog.v2" timestamp="1611060170317">
+    <state x="360" y="1" key="CommitChangelistDialog2/0.0.1470.864@0.0.1470.864" timestamp="1611060749027" />
+    <state x="328" y="152" key="Vcs.Push.Dialog.v2" timestamp="1611060754365">
       <screen x="0" y="0" width="1470" height="864" />
     </state>
-    <state x="328" y="152" key="Vcs.Push.Dialog.v2/0.0.1470.864@0.0.1470.864" timestamp="1611060170317" />
+    <state x="328" y="152" key="Vcs.Push.Dialog.v2/0.0.1470.864@0.0.1470.864" timestamp="1611060754365" />
   </component>
 </project>
