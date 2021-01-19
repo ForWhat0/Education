@@ -99,7 +99,7 @@ export default function EventCalendar({locale,loading,event,menu,allDates,contac
 
     const router = useRouter()
     const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
-    const [value, onChange] = useState(new Date());
+    const [value, onChange] = useState(event.length > 0 ? new Date(event[0].dateGmt.replace(/-/g, "/") ): new Date());
     const [calendarOpen, setCalendarOpen] = useState(false);
     const [searchInput, setSearchInput] = useState('');
     const [searchLoading, setSearchLoading] = useState(false);
@@ -169,10 +169,7 @@ export default function EventCalendar({locale,loading,event,menu,allDates,contac
                     </Input>
                 </Header>
 
-                    <DatePicker getSelectedDay={selectedDay}
-                                tileDisabled={allDates}
-                                selectDate={new Date(value)}
-                    />
+
 
                 {
                     searchInput.length > 0  ?

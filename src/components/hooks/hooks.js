@@ -92,7 +92,7 @@ export const  hexToRgbA=(hex)=>{
     throw new Error('Bad Hex');
 }
 export const  formatDate=(date) =>{
-    let d = new Date(date),
+    let d = new Date(date.replace(/-/g, "/")),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
