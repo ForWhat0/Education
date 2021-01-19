@@ -140,7 +140,7 @@ display:none;
 export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
     const {visuallyImpairedMode} = useSelector(state=>state.app)
     const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
-    const inputDate = new Date(hoursOne?.hoursEvents?.hoursEvents ? hoursOne.hoursEvents.hoursEvents :new  Date())
+    const inputDate = hoursOne?.hoursEvents?.hoursEvents ? new Date(hoursOne.hoursEvents.hoursEvents) : new Date()
     const borderLeft = visuallyImpairedMode ? '#1D1D1B' : borderLeftColor
 
 
@@ -161,7 +161,7 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                        >
                            {
 
-                                   format(new Date(), "MMMM yyyy", {locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk})
+                                   format(inputDate, "MMMM yyyy", {locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk})
 
 
                            }
