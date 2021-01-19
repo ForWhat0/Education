@@ -34,7 +34,10 @@ export default function CalendarEvents({loading,posts}){
                     }).map((el,i)=>
                         <Link key={i} href={`/calendar/[currentHourId]`} as={`/calendar/${el.databaseId}`}>
                             <a>
-                                
+                                <CalendarEvent
+                                hoursOne={el}
+                                offBorder={length === i + 1}
+                            />
                             </a>
                         </Link>
 

@@ -48,8 +48,10 @@ border-left: ${props=>props.border};
 
 
 export default function CalendarEvent({offBorder,hoursOne}) {
-
-    const inputDate = new Date(hoursOne?.hoursEvents?.hoursEvents.replace(/-/g, "/"))
+    
+    const inputDate = hoursOne?.hoursEvents?.hoursEvents ?
+        new Date(hoursOne.hoursEvents.hoursEvents.replace(/-/g, "/"))
+        : new  Date()
     const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
 
     return (
