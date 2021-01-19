@@ -42,7 +42,7 @@ export default function Events({locale,posts,titleEvent}){
                 {posts.map((node,i) =>
                     <Link key={i} href={`/calendar/date/[currentDate]`} as={`/calendar/date/${node.dateGmt.substring(0,10)}`}>
                         <a>
-                           <div></div>
+                          <div>asd</div>
                         </a>
                     </Link>
                 )}

@@ -34,7 +34,7 @@ export default function Home({contacts,locale,menu,news,events,data,services,all
       >
 
         {events.length > 0 &&<Events locale={locale} titleEvent={mainPageFields?.titleEvent}  posts={events}/>}
-      
+
         {services?.nodes.length > 0 &&
         <div id="Services"  className="element">
           <Services locale={locale} titleServices={mainPageFields?.titleServices}  posts={services.nodes}  pageInfo={services.pageInfo} />
