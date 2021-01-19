@@ -6,7 +6,7 @@ import {uk,enGB, ru} from "date-fns/locale";
 import {events} from "../../Lsi/lsi"
 import {useSelector} from "react-redux";
 import {StyledButton} from "../button/button";
-import {firstChartToUpperCase} from "../hooks/hooks";
+
 import {ReviewButton} from "../button/reviewButton";
 
 const opacity = keyframes`
@@ -142,18 +142,7 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
     const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
     const inputDate = new Date(hoursOne?.hoursEvents?.hoursEvents ? hoursOne.hoursEvents.hoursEvents :new  Date())
     const borderLeft = visuallyImpairedMode ? '#1D1D1B' : borderLeftColor
-    const renderDay=()=>{
-        if(isToday(inputDate)){
-            return events.today[locale]
-        }
-        else{
-            return  firstChartToUpperCase(
-                format(
-                    inputDate,  "EEEE",{locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk}
-                )
-            )
-        }
-    }
+
 
     return (
             <EventContainer visuallyImpairedModeWhiteTheme={visuallyImpairedModeWhiteTheme} visuallyImpairedMode={visuallyImpairedMode}>
@@ -171,9 +160,9 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                            fontWeight='500'
                        >
                            {
-                               firstChartToUpperCase(
+                              
                                    format(inputDate, "MMMM yyyy", {locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk})
-                               )
+
 
                            }
                        </TextField>
@@ -181,7 +170,7 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                            fontSize='16px'
                            fontWeight='100'
                        >
-                         {renderDay()}
+
                        </TextField>
                    </MonthAndDay>
                        <Time visuallyImpairedMode={visuallyImpairedMode}>
