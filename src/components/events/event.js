@@ -151,7 +151,7 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                        fontSize='40px !important'
                        fontWeight='bold'
                    >
-
+                    
                    </TextField>
                    <MonthAndDay visuallyImpairedMode={visuallyImpairedMode}>
                        <TextField
@@ -159,7 +159,12 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                            fontSize='16px'
                            fontWeight='500'
                        >
-                           
+                           {
+
+                                   format(inputDate, "MMMM yyyy", {locale: locale === "EN" ? enGB : locale === "RU" ? ru : uk})
+
+
+                           }
                        </TextField>
                        <TextField
                            fontSize='16px'
@@ -174,8 +179,8 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
                                className="fa fa-clock-o"
                                aria-hidden="true"
                            />
-
-
+                         
+                           
                        </Time>
                </TimeContainer>
                 <Text visuallyImpairedMode={visuallyImpairedMode} border={offBorder ? 'unset' : '1px solid'}>
