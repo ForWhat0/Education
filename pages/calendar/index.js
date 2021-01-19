@@ -160,37 +160,6 @@ export default function EventCalendar({locale,loading,event,menu,allDates,contac
                 </Header>
 
 
-                {
-                    searchInput.length > 0  ?
-
-                        searchLoading ?
-                            <LoaderContainer>
-                                <StyledLoader/>
-                            </LoaderContainer>
-                            :
-
-                            eventByTitle.hours?.length > 0 ?
-                                <>
-                                    <LoaderContainer>
-                                        <h2 style={{margin: "0.67rem 0 0 0"}}>
-                                            {calendarLsi.result[locale]}
-                                        </h2>
-                                    </LoaderContainer>
-                                    <CalendarEvents loading={loading}  posts={eventByTitle}/>
-                                </>
-                            :
-                                <LoaderContainer>
-                                    <h2>{calendarLsi.notExist[locale]}</h2>
-                                </LoaderContainer>
-
-                            :
-
-                        event.length > 0 ? <CalendarEvents loading={loading}  posts={event[0].eventsFields}/>
-                        :
-                            <LoaderContainer>
-                                <h2>{calendarLsi.todayNotExist[locale]}</h2>
-                            </LoaderContainer>
-                }
 
 
 
