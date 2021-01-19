@@ -145,17 +145,7 @@ export default function EventCalendar({locale,loading,event,menu,allDates,contac
                         <CalendarWrapper ref={calendar}>
                             <CalendarIcon onClick={()=>setCalendarOpen(!calendarOpen)}/>
                             <CalendarContainer open={calendarOpen ? 'block' : 'none'}>
-                                <Calendar
-                                    locale={locale === "EN" ? 'en-EN' : locale === "RU" ? 'ru-RU' : 'ua-UA'}
-                                    className={!visuallyImpairedModeWhiteTheme ? 'calendarVisuallyMode' : 'calendar'}
-                                    onChange={value => selectedDay(value)}
-                                    value={value}
-                                    tileDisabled={({date, view}) =>
-                                        (view === 'month') &&
-                                        allDates.every(disabledDate =>
-                                            formatDate(date) !== disabledDate.dateGmt.toString().substring(0,10)
-                                        )}
-                                />
+
                             </CalendarContainer>
                         </CalendarWrapper>
                     </Title>
@@ -169,10 +159,6 @@ export default function EventCalendar({locale,loading,event,menu,allDates,contac
                     </Input>
                 </Header>
 
-                    <DatePicker getSelectedDay={selectedDay}
-                                tileDisabled={allDates}
-                                selectDate={new Date(value)}
-                    />
 
                 {
                     searchInput.length > 0  ?
