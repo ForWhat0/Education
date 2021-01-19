@@ -141,7 +141,8 @@ export default function Event({offBorder,locale,borderLeftColor,hoursOne}) {
     const {visuallyImpairedMode} = useSelector(state=>state.app)
     const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
     const inputDate =  hoursOne?.hoursEvents?.hoursEvents &&
-        new Date(format(new Date(hoursOne.hoursEvents.hoursEvents), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"))
+        new Date(hoursOne.hoursEvents.hoursEvents.replace(/-/g, "/"))
+
     const borderLeft = visuallyImpairedMode ? '#1D1D1B' : borderLeftColor
     const renderDay=()=>{
         if(isToday(inputDate)){
