@@ -42,7 +42,11 @@ export default function Events({locale,posts,titleEvent}){
                 {posts.map((node,i) =>
                     <Link key={i} href={`/calendar/date/[currentDate]`} as={`/calendar/date/${node.dateGmt.substring(0,10)}`}>
                         <a>
-                          <div>asd</div>
+                            <Event
+                                locale={locale}
+                                borderLeftColor={i === 0 ? '#0072BC' : i === 1 ? ' #FFDE00' : '#00AEEF'}
+                                hoursOne={node.eventsFields.hoursOne}
+                            />
                         </a>
                     </Link>
                 )}
