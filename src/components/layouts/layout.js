@@ -16,7 +16,7 @@ import {BubbleBg} from "../bubbleBg/bubbleBg";
 
 
 
-export  const Layout = ({showLinks,menu, header}) => {
+export  const Layout = ({showLinks,menu, header,children}) => {
     const {visuallyImpairedMode} = useSelector(state=>state.app)
 
 
@@ -34,25 +34,9 @@ export  const Layout = ({showLinks,menu, header}) => {
     return (
         <>
 
-
-            <Modal/>
-
-                <div  ref={node}>
-                    {header}
-                    <Menu menu={menu}/>
-                </div>
-            {
-                !visuallyImpairedMode && <BubbleBg/>
-            }
-            {
                 showLinks && <RouterLink/>
-            }
-
-
-
-
-
-
+                !visuallyImpairedMode && <BubbleBg/>
+                children
 
         </>
     );
