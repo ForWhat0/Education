@@ -84,56 +84,71 @@
 @-webkit-keyframes pulsate {
     0% {
         margin: 0 0 0 0;
+        top:0;
     }
     50% {
         margin: 3% 0 0 3%;
+        top:50px;
     }
     100% {
         margin: 0 0 0 0;
+        top:0;
     }
 }
 @-moz-keyframes pulsate {
     0% {
         margin: 0 0 0 0;
+        top:0;
     }
     50% {
         margin: 3% 0 0 3%;
+        top:50px;
     }
     100% {
         margin: 0 0 0 0;
+        top:0;
     }
 }
 @-ms-keyframes pulsate {
     0% {
         margin: 0 0 0 0;
+        top:0;
     }
     50% {
         margin: 3% 0 0 3%;
+        top:50px;
     }
     100% {
         margin: 0 0 0 0;
+        top:0;
     }
 }
 @-o-keyframes pulsate {
     0% {
         margin: 0 0 0 0;
+        top:0;
     }
     50% {
         margin: 3% 0 0 3%;
+        top:50px;
     }
     100% {
         margin: 0 0 0 0;
+        top:0;
     }
 }
 @keyframes pulsate {
     0% {
         margin: 0 0 0 0;
+        top:0;
     }
     50% {
         margin: 3% 0 0 3%;
+        top:50px;
     }
     100% {
         margin: 0 0 0 0;
+        top:0;
     }
 }
 
