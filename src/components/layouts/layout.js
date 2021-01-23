@@ -22,7 +22,7 @@ import { NewsLsi} from "../../Lsi/lsi";
 import {useRouter} from "next/router";
 import {Container} from "../../../pages/news";
 import {RouterLink} from "../routerLink/routerLink";
-import { Modal } from "../modal/modal";
+
 import {BubbleBg} from "../bubbleBg/bubbleBg";
 
 
@@ -57,59 +57,61 @@ export  const Layout = ({showLinks,databaseId,contacts,menu,hideLeftComponent,ch
             </Head>
 
 
-                {header}
-               
-            {
 
+                <div  ref={node}>
+                    {header}
+                    <Menu menu={menu}/>
+                </div>
+            {
                 !visuallyImpairedMode && <BubbleBg/>
             }
             {
                 showLinks && <RouterLink/>
             }
 
-            {
-                inputNewsByTitle.length ?
+                {
+                    inputNewsByTitle.length ?
 
-                    loading ?
-                        <LoaderContainer>
-                            <StyledLoader/>
-                        </LoaderContainer>
+                      loading ?
+                          <LoaderContainer>
+                              <StyledLoader/>
+                          </LoaderContainer>
+                      :
+                          newsByTitle.length ?
+                              <Container>
+                                  <LoaderContainer>
+                                      <h2 style={{margin: "0.67rem 0 0 0"}}>
+                                          {NewsLsi.result[locale]}
+                                      </h2>
+                                  </LoaderContainer>
+                                  <NewsWrapper posts={newsByTitle}/>
+                              </Container>
+                   :
+                              <div
+                                   style={{textAlign:'center',margin:'50px 0 50px 0'}}
+                              >
+                                  <h1>{NewsLsi.notExist[locale]}</h1>
+                                  <h2
+                                      onClick={()=>dispatch(OnchangeInputSearchNews(''))}
+                                      style={{borderBottom:'1px solid',paddingBottom:'10px',display: 'inline',cursor:'pointer'}}
+                                  >
+                                      {NewsLsi.cleanInput[locale]}
+                                  </h2>
+                              </div>
+
+                    :
+                        children
+
+                }
+                {
+                    showZNORegister ?
+                        <Element name="#RegisterZNO" className="element">
+                            <StyledRegisterZNO databaseId={databaseId} showZNORegister={showZNORegister} contacts={contacts} menu={menu}/>
+                        </Element>
                         :
-                        newsByTitle.length ?
-                            <Container>
-                                <LoaderContainer>
-                                    <h2 style={{margin: "0.67rem 0 0 0"}}>
-                                        {NewsLsi.result[locale]}
-                                    </h2>
-                                </LoaderContainer>
-                                <NewsWrapper posts={newsByTitle}/>
-                            </Container>
-                            :
-                            <div
-                                style={{textAlign:'center',margin:'50px 0 50px 0'}}
-                            >
-                                <h1>{NewsLsi.notExist[locale]}</h1>
-                                <h2
-                                    onClick={()=>dispatch(OnchangeInputSearchNews(''))}
-                                    style={{borderBottom:'1px solid',paddingBottom:'10px',display: 'inline',cursor:'pointer'}}
-                                >
-                                    {NewsLsi.cleanInput[locale]}
-                                </h2>
-                            </div>
-
-                    :
-                    children
-
-            }
-            {
-                showZNORegister ?
-                    <Element name="#RegisterZNO" className="element">
-                        <StyledRegisterZNO databaseId={databaseId} showZNORegister={showZNORegister} contacts={contacts} menu={menu}/>
-                    </Element>
-                    :
-                    !hideLeftComponent ?  <StyledLeftComment databaseId={databaseId} contacts={contacts} menu={menu}/> :
-                        <PageFooter contacts={contacts} menu={menu}/>
-            }
+                        !hideLeftComponent ?  <StyledLeftComment databaseId={databaseId} contacts={contacts} menu={menu}/> :
+                            <PageFooter contacts={contacts} menu={menu}/>
+                }
 
 
 

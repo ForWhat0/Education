@@ -6,7 +6,6 @@ export const BubbleBg = ()=>{
          animationButton()
     },[])
     return(
-
         <div id="wrapper">
 
             <div id="parallax-lvl-3">
@@ -21,6 +20,5 @@ export const BubbleBg = ()=>{
             </div>
 
         </div>
-
     )
 }
