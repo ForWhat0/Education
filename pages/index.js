@@ -34,7 +34,6 @@ export default function Home({contacts,locale,menu,news,events,data,services,all
      menu={parsedMenu}
      title = {mainPageFields.titleBanner}
       >
-        <BubbleBg/>
         {popularProjectsData?.projects?.length > 0 &&<ProjectsWrapper locale={locale}  posts={popularProjectsData}/>}
         {
           !visuallyImpairedMode &&
