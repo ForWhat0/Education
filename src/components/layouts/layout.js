@@ -56,12 +56,11 @@ export  const Layout = ({showLinks,databaseId,contacts,menu,hideLeftComponent,ch
                 <title>{contacts?.titleSite}</title>
             </Head>
 
-            <Modal/>
 
-            <div  ref={node}>
-                <Menu menu={menu}/>
-            </div>
+                {header}
+               
             {
+
                 !visuallyImpairedMode && <BubbleBg/>
             }
             {
