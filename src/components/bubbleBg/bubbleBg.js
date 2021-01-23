@@ -6,6 +6,7 @@ export const BubbleBg = ()=>{
          animationButton()
     },[])
     return(
+        <div id="global">
         <div id="wrapper">
 
             <div id="parallax-lvl-3">
@@ -19,6 +20,7 @@ export const BubbleBg = ()=>{
                 <div id="b0-8" className="bubble size1 yellow">&nbsp;</div>
             </div>
 
+        </div>
         </div>
     )
 }

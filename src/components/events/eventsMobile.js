@@ -15,9 +15,9 @@ import GET_EVENT_BY_DATE from "../../queries/get_event_by_date";
 const GlobalContainer = styled.div`
    display:none;
  @media screen and ${device.mobileL} {
-     width: 96%;
+     width: 93.6%;
      display:block;
-    margin-left: 2%;
+    margin-left: 3.2%;
       margin-bottom:40px;
   }
 `
@@ -25,10 +25,12 @@ const EventContainer = styled.div`
  margin:40px 0 40px 0;
 `
 const ButtonContainer = styled.div`
+      text-align: center;
   width:100%;
-  display:flex;
-  justify-content:center;
    margin:0 0 20px 0;
+    @media screen and ${device.mobileL} {
+     width: 96%;
+  }
 `
 
 const LoaderContainer = styled.div`
@@ -63,7 +65,8 @@ export default function EventsMobile({locale,titleEvent,posts,allDates}){
                         status,
                         year,
                         month,
-                        day
+                        day,
+                        language:locale
                     }
                 } )
 
@@ -79,6 +82,7 @@ export default function EventsMobile({locale,titleEvent,posts,allDates}){
         <GlobalContainer>
             <TitleForComponent text={titleEvent}/>
             <DatePicker getSelectedDay={selectedDay}
+                        doScroll = {new Date(currentDate.dateGmt).getDate()+new Date(currentDate.dateGmt).getMonth()+1}
                         tileDisabled={allDates}
                         selectDate={new Date(currentDate.dateGmt)}
             />

@@ -8,6 +8,7 @@ import NewsWrapper from "./newsWrapper";
 import {actionGetNews, actionGetNextNewsForMobile} from "../../redux/actions/actions";
 import News from "./news";
 import {createRef} from "react";
+import {device} from "../deviceSizes/deviceSizes";
 
 
 export const Back = styled.div`
@@ -20,14 +21,20 @@ export const Container = styled.div`
 position:relative;
 width:80%;
 margin-left:10%;      
- @media screen and (max-width:650px) {
-   width:auto;
-margin-left:unset;  
+ @media screen and  ${device.tablet} {
+    width: 93.6%;
+  margin-left:3.2%;
   }
+  @media screen and (max-width:650px) {
+width: auto;
+  }   
 `
 const Header = styled.div`
 display:flex;
-align-items:center;    
+align-items:center; 
+ @media screen and (max-width:650px) {
+   width: 93.6%;
+  }   
 `
 export const IconContainer = styled.button`
 margin-left:40px;  
@@ -61,7 +68,6 @@ justify-content:center;
 `
 const StyledContainer = styled.div`
  display:flex;
- justify-content: center;
  cursor:pointer;
  flex: 1 1 250px;
  flex-direction: column;
@@ -69,15 +75,17 @@ const StyledContainer = styled.div`
  margin: 0 0 40px;
  padding: 0 20px 40px;
  min-height: 250px;
+ position:relative;
  background-size: cover;
   transition: transform .2s linear;
     &:hover  {
     transform: scale(1.01);
   }
 @media screen and (max-width:650px){
-        min-width: 240px;
+        min-width: 220px;
      flex: unset;
-      padding: 10px;
+      padding: unset;
+      margin: 10px 20px 10px 0;
   }
 `
 const ScrollBarStyled = styled.div`
@@ -128,7 +136,7 @@ export default function LastNews({locale,padding,posts,pageInfo,background,butto
         if (loading || !hasNextPageForMobile){
             return null
         }
-        dispatch(actionGetNextNewsForMobile(!newsForMobileSliderReducer ? offsetMobile :  offsetMobile+3 ,!newsForMobileSliderReducer ? newsForMobile :  null,locale))
+        dispatch(actionGetNextNewsForMobile(!newsForMobileSliderReducer ? offsetMobile :  offsetMobile+3 , newsForMobile ,locale))
     }
     const prevNews=()=>{
         if (loading || !hasPreviousPage){
@@ -177,6 +185,7 @@ export default function LastNews({locale,padding,posts,pageInfo,background,butto
                             {newsForMobile.map(node =>
                                 <StyledContainer key={node.databaseId}>
                                     <News
+                                        paddingBottom='41px'
                                         databaseId={node.databaseId}
                                         key={node.slug}
                                         title={node.title}

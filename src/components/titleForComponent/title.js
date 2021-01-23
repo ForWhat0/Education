@@ -12,6 +12,17 @@ margin-bottom:${props => props.marginBottom};
 padding-bottom:${props => props.paddingBottom};
 border-bottom:${props => props.borderBottom};
 position:relative;
+  @media screen and ${device.tablet}{
+padding-bottom:${props => props.paddingBottom === '40px' ? '16px' : props => props.paddingBottom};
+margin-bottom: ${props => props.paddingBottom === '40px' && 'unset'};;
+  }
+  @media screen and (max-width:650px){
+line-height: 30px;
+font-size:${props=>props.display === 'none' && '16px'}!important;
+  }
+  @media screen and ${device.mobileL}{
+font-size: ${props=>props.display === 'none' ? '16px' : '20px'}!important;
+  }
 div{
     display:${props=>props.display};
     position: absolute;
@@ -26,11 +37,6 @@ height: 8px;
 bottom: 7px;
   }
 }
-
-@media screen and ${device.mobileL}{
-line-height: 30px;
-font-size: 20px;
-  }
 `
 
 export const TitleForComponent=({marginTop,lineHeight,displayYellowDiv,borderBottom,paddingBottom,text,fontSize,marginBottom})=>{

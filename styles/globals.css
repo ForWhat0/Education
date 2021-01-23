@@ -1,21 +1,28 @@
 @font-face {
   font-family: "e-Ukraine";
-  src: url("/fonts/e-Ukraine_font/e-Ukraine-Regular.ttf");
+  src: url("/fonts/e-Ukraine_font/e-Ukraine-Regular.woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
-html,body:focus{
+html:focus,body:focus{
   outline: none;
 }
 html,
 body {
+  -webkit-tap-highlight-color: transparent;
   outline: none;
   width:100%;
   overflow-x: hidden;
   padding: 0;
-  margin: 0;
   font-family: e-Ukraine;
+  margin: 0px;
+}
+body{
+  max-width: 2560px;
+  text-align: left;
+  margin: 0px auto;
+  position: relative;
 }
 
 input,input[type="text"], input[type="date"],input[type="password"], button, textarea, select {
@@ -192,7 +199,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 figure img {
   margin-bottom: 40px!important;
   width: 100%!important;
-  height: auto!important;
+  height: unset!important;
+  align-self: flex-start;
+  justify-self: flex-start;
 }
 .wp-block-button a,
 .wp-block-file a.wp-block-file__button {

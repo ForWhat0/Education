@@ -3,10 +3,16 @@ import {TitleForComponent} from "../titleForComponent/title";
 import styled from "styled-components";
 import Link from "next/link";
 import {useSelector} from "react-redux";
+import {device} from "../deviceSizes/deviceSizes";
 
 const TitleContainer = styled.div`
 margin-left: 10%;
 margin-bottom:60px;
+ @media screen and ${device.tablet}{
+  margin-left: 3.2%;
+  width:93.6%;
+  margin-bottom:20px;
+  }
 `
 
 export default function Projects({textForIcon,posts,title}){
@@ -21,7 +27,7 @@ export default function Projects({textForIcon,posts,title}){
               <TitleForComponent  text={title} fontSize='40px' />
           </TitleContainer>
           {posts.map((node,i) =>
-              <Link key={node.slug} href={`/projects/[slug]`} as={`/projects/${node.slug}`}>
+              <Link key={node.slug} href="/projects/[id]/" as={`/projects/${node.databaseId}/`}>
                   <a>
                       <Project
                           flexDirection={i%2 ? 'row-reverse':'row'}

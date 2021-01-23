@@ -1,27 +1,35 @@
 import styled from 'styled-components'
 import {device} from "../deviceSizes/deviceSizes";
+import {useSelector} from "react-redux";
 
-const SearchBar = styled.span`
+const SearchBar = styled.div`
  position: relative;
- margin-right: 10px;
  display: flex;
+    justify-content: center;
     align-items: center;
+    width:  36px;
+    height: 36px;
  border:${props => props.border};
- border-radius:28px;
+ border-radius:30px;
  position:${props => props.position};
- right:${props => props.right}
+ right:${props => props.right};
+ &:hover{
+ width:160px;
+ }
 `
 const Icon = styled.i`
    position: absolute; 
-  right: 7px; 
   color:black;
   z-index: 3; 
   font-size:20px;
   @media screen and ${device.laptop}{
      font-size:25px;
   }
+  ${SearchBar}:hover & {
+    right:10px;
+  }
 `
-const Input = styled.input.attrs(props => ({
+ const Input = styled.input.attrs(props => ({
     name:props.name,
     onChange:props.func,
     value:props.value,
@@ -39,21 +47,22 @@ const Input = styled.input.attrs(props => ({
    background-color: ${props=>props.color};
   padding: 5px 15px;
   font-size: 16px;
+  width:0;
   border: 1px solid #000000;
    transition: width 0.25s;    
-    width: ${props=>props.value ? '150px' : '0'};
-  right:0;
   z-index:2;
 border-radius: 28px;
    @media screen and ${device.laptop}{
     padding: 9px 18px;
   }
     ${SearchBar}:hover & {
-    width: 150px!important;
+    width: 160px!important;
     background-color: white;
-  }
+  }  
 `;
-export const AnimationSearchBarStyled = ({value,color,inputName,inputFunc,inputPlaceholder})=>{
+export const AnimationSearchBarStyled = ({background,value,inputName,inputFunc,inputPlaceholder})=>{
+    const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
+    const color = !visuallyImpairedModeWhiteTheme ? 'white' : background ? background : 'transparent'
     return(
         <SearchBar>
             <Icon className="fa fa-search" aria-hidden="true"/>

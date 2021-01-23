@@ -21,10 +21,10 @@ import {actionClickModal} from "../../src/redux/actions/actions";
  margin-left:10%;
  padding-bottom:40px;
 background: url(${props=>props.bgImg}) no-repeat center center fixed;   
-@media screen and (max-width:700px) {
- background:unset;
- width:94%;
- margin-left:3%;
+  @media screen and ${device.tablet} {
+background:unset;
+ width:93.6%;
+ margin-left:3.2%;
   }
 
 `
@@ -44,23 +44,23 @@ align-items: center;
 position:relative;
 margin-bottom: 30px;
 
-div{
+ @media screen and (max-width:950px) {
+  flex-direction:column;
+  }
+`
+const RegisterOnZnoContainer = styled.div`
 position:absolute;
 right:0;
 @media screen and (max-width:950px) {
   position:relative;
+  margin-top:20px;
   }
-}
-div a button{
+a button{
 @media screen and (max-width:950px) {
   font-size:14px;
+  line-height: 20px;
   }
 }
-
-
- @media screen and (max-width:950px) {
-  flex-direction:column;
-  }
 `
 
 const Year = styled.span`
@@ -75,7 +75,11 @@ list-style-type: none;
     cursor:pointer;
     
     i{
-    transform: rotateX(${props=>props.open});
+    -webkit-transform: rotate(${props=>props.open});
+  -moz-transform: rotate(${props=>props.open});
+  -o-transform: rotate(${props=>props.open});
+  -ms-transform: rotate(${props=>props.open});
+  transform: rotate(${props=>props.open});
     color:${props=>props.color};
 margin-left:10px;
 font-size:17px;
@@ -160,11 +164,11 @@ export default function GetEvent({serviceBySlug,menu,contacts,locale}) {
                     <TitleForComponent  borderBottom='unset' text={serviceBySlug.title}  />
                     {
                         zno &&
-                        <div>
+                        <RegisterOnZnoContainer>
                             <ScrollLink to={"#RegisterZNO"}  hashSpy={true}   offset={-100} spy={true} smooth={true}  duration={500} >
                                 <StyledButton  text={services.registerZNO[locale]}/>
                             </ScrollLink>
-                        </div>
+                        </RegisterOnZnoContainer>
                     }
                 </Header>
                 {

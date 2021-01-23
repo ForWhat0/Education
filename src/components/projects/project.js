@@ -3,6 +3,7 @@ import StyledTextComponent from "../textComponent/textComponent";
 import {StyledDivWithIconBackGround} from "./backgroundWithIcon";
 import {device} from "../deviceSizes/deviceSizes";
 import {useSelector} from "react-redux";
+import 'lazysizes'
 
 const Container = styled.div`
 min-height:${props=>props.minHeight};
@@ -25,7 +26,7 @@ border-bottom:${props=>props.bBottom};
 flex-direction:${props => props.flexDirection};
 @media screen and ${device.tablet} {
 padding-top: 20px;
-width:94%;
+width:93.6%;
 padding-bottom:20px;
 flex-direction:column;
      
@@ -37,12 +38,14 @@ justify-content: ${props=>props.justifyImage};
 display: ${props=>props.display};
 @media screen and ${device.tablet} {
    margin-right: unset;
-   justify-content:unset;
+   justify-content:center;
     width: 90%;
     margin-left: 5%;
   }
 `
 const Image = styled.img`
+width:100%;
+height:100%;
 max-height: 288px;
 max-width: 488px;
 width:100%;
@@ -52,6 +55,7 @@ filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.2));
    width: auto;
   }
 `
+
 const Text = styled.div`
 width:100%;
 color:${props=>props.color};
@@ -63,6 +67,12 @@ margin:0;
  margin-top: 20px;
     text-align: center;
     margin-bottom: 20px;
+    font-size:16px;
+  }
+}
+div {
+@media screen and ${device.tablet} {
+    font-size:12px;
   }
 }
 @media screen and ${device.tablet} {
@@ -91,7 +101,10 @@ export default function Project(props) {
                         src={props.backgroundIcon}/>
                         <ContainerWrapper bBottom={bBottom} pBottom={pBottom}  flexDirection={props.flexDirection}>
                             <ImageContainer display={images ? 'flex' : 'none'}  justifyImage={justifyImage} rightImage={rightImage}>
-                                <Image  src={props.coverImage?.sourceUrl}/>
+                                    <Image
+                                        className="lazyload"
+                                        data-src={props.coverImage?.sourceUrl}
+                                    />
                             </ImageContainer>
                             <Text color={!visuallyImpairedModeWhiteTheme ? 'white' : 'black'}  rightText={rightText}>
                                 <StyledTextComponent

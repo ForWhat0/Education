@@ -19,7 +19,7 @@ const SearchBar = styled.span`
 `
 const Icon = styled.i`
    position: absolute; 
-  right: 20px; 
+  right: 15px; 
   z-index: 1; 
   font-size:20px;
 `
@@ -30,6 +30,9 @@ const Input = styled.input.attrs(props => ({
     onChange:props.func,
     placeholder :props.inputPlaceholder,
 }))`
+@media screen and ${device.mobileL}{
+   font-size: 16px;
+  }
 &.hasFocus:focus
   color: #333;
  padding-top: 10px;

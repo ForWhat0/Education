@@ -23,8 +23,8 @@ width:80%;
   margin-top:40px;
 margin-left:10%;   
 @media screen and (max-width:700px) {
-       width: 90%;
-    margin-left: 4%;
+       width: 93.6%;
+    margin-left: 3.2%;
   }
 h1{
 @media screen and (max-width:700px) {
@@ -88,6 +88,7 @@ export default function ProjectDetails({projectBySlug,menu,contacts}) {
     const parsedMenu = ParcMenu(menu)
     const {visuallyImpairedMode} = useSelector(state=>state.app)
     const {visuallyImpairedModeWhiteTheme} = useSelector(state=>state.app)
+
     return (
         <MainLayout databaseId={projectBySlug.databaseId} contacts={contacts} menu={parsedMenu}>
             {
@@ -126,8 +127,9 @@ export default function ProjectDetails({projectBySlug,menu,contacts}) {
                                             <a target='_blank' href={projectBySlug.projectFields.siteLink}>
                                                 <div style={{width:'40px',height:'40px',background:'url(/linkIconDark.svg) no-repeat'}}/>
                                                 <div>
-                                                    <span style={{color:'rgb(0,114,188)'}}
-                                                    >{projectBySlug.projectFields.siteLink}</span>
+                                                    <span style={{color:'rgb(0,114,188)'}}>
+                                                        {projectBySlug.projectFields.siteLink.substring(0, 20)}...
+                                                    </span>
                                                 </div>
 
                                             </a>
@@ -152,16 +154,18 @@ export default function ProjectDetails({projectBySlug,menu,contacts}) {
 
 
 
-export async function getStaticProps({params,locale}){
 
-    const slug = params?.slug
+export const getStaticProps = async (
+    {params,locale}
+) => {
+    const id = params?.id
     const contactsUri = locale === "EN" ? "/en/contacts/" : locale === "RU" ? "/ru/kontakty/"  : "/kontakti/"
     const location = locale === "EN" ? "HEADER_MENU___EN" : locale === "RU" ? "HEADER_MENU___RU"  : "HEADER_MENU"
 
     const { data  } = await reduxClient.query( {
         query: GET_PROJECT_BY_SLUG,
         variables: {
-            slug,
+            id,
             location,
             contactsUri
         }
@@ -171,10 +175,10 @@ export async function getStaticProps({params,locale}){
             projectBySlug:data?.project ? data.project : [],
             menu: data?.menuItems?.nodes || [],
             contacts:data?.contacts?.contactsFields ? data.contacts.contactsFields : [],
-        },
-        revalidate: 1
+        }
     }
-}
+};
+
 export const getStaticPaths = async ({locales}) => {
     let paths = []
 
@@ -185,7 +189,7 @@ export const getStaticPaths = async ({locales}) => {
     for (const locale of locales) {
         paths = [
             ...paths,
-            ...data.projects?.nodes.map(el => ({ params: { slug: el.slug }, locale })),
+            ...data.projects?.nodes.map(el => ({ params: { id: el.databaseId.toString() }, locale })),
         ]
     }
 

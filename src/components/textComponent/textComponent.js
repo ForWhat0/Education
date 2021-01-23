@@ -14,7 +14,6 @@ const TextContent = styled.div`
     @media screen and ${device.tablet} {
    flex-direction:column;
       margin-top:unset;
-       padding-top: unset;
   }
 `
 const Review = styled.div`
@@ -25,7 +24,10 @@ const Review = styled.div`
    align-items: center;
    position:${props=>props.position};
    padding-top: ${props=>props.pTop};
-    @media screen and ${device.mobileL}{
+    @media screen and ${device.tablet}{
+   display:${props=>props.display};
+  }
+  @media screen and ${device.mobileL}{
    display:none;
   }
 }
@@ -40,12 +42,25 @@ const StyledDate = styled.div`
   }
 `
 
+const Date = styled.div`
+   display:none;
+@media screen and ${device.tablet}{
+width:100%;
+   display:block;
+    border-top:${props => props.border};
+   padding-top: ${props=>props.pTop};
+   position: absolute;
+    bottom: 0;
+  }
+`
+
 const StyledTextComponent =({offBorder,fontSize,paddingBottom,bottom,title,excerpt ,date})=>{
     const border = excerpt  ? 'unset' : '2px solid;'
     const position = bottom ? 'absolute' : 'relative'
     const width = bottom ? '100%' : 'auto'
     const router = useRouter()
     const locale = router.locale
+    const dateFormat = date &&   date.slice(0, 10).split('-').reverse().join('.')
     return (
         <>
             <TitleForComponent
@@ -62,7 +77,13 @@ const StyledTextComponent =({offBorder,fontSize,paddingBottom,bottom,title,excer
 
 
             }
-                    <Review pTop={offBorder ? '40px' : '20px'} width={width} position={position} border={border}>
+            {
+                date &&
+                    <Date pTop={offBorder ? '40px' : '20px'}   border={border}>
+                        {dateFormat}
+                    </Date>
+            }
+                    <Review display={date ? 'none' : 'flex'} pTop={offBorder ? '40px' : '20px'} width={width} position={position} border={border}>
                         {
                             offBorder ?
                                 <StyledButton text={ProjectsLsi.review[locale]}/>
@@ -72,7 +93,7 @@ const StyledTextComponent =({offBorder,fontSize,paddingBottom,bottom,title,excer
                                     {
                                         date &&
                                         <StyledDate>
-                                            {date.slice(0, 10).split('-').reverse().join('.')}
+                                            {dateFormat}
                                         </StyledDate>
                                     }
                                 </>

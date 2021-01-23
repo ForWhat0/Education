@@ -74,13 +74,14 @@ export const CircleBackground = styled.div`
     position: absolute;
 `
 export const ALink = styled.a`
+cursor:pointer;
  background:${props=>props.activeLink?.background};
   -webkit-background-clip: ${props=>props.activeLink?.text};
   -webkit-text-fill-color:${props=>props.activeLink?.transparent};
 `
 
 export const Header = styled.div`
-background: url(https://epo.org.ua/wp-content/uploads/2020/11/diia_gradient_03.png);
+background: url(/diia_gradient.png);
     padding-left: 15px;
     height: 74px;
     z-index: 6;

@@ -5,15 +5,15 @@ export const StyledBurger = styled.button`
    @media screen and ${device.laptop}{
       display: flex;
   }
-  position:${({ open }) => open ? 'fixed' : 'absolute'};
+  position:${({ open }) => open ? 'fixed' : 'relative'};
   display:none;
-   right:12px;
   flex-direction: column;
       padding: 7px!important;
   align-items: center;
   border: none;
   cursor: pointer;
   padding: 0;
+  margin-left:${({ open }) => open ? 'unset' : '20px'};
   z-index: 10;
    background: ${ props => props.open ? '#000' : props.dark ? '#000' : props.color};
     border-radius: 29px;

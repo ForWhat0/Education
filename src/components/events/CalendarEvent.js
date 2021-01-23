@@ -16,7 +16,7 @@ cursor:pointer;
 const TimeContainer = styled.div`
 display:flex;
 align-items: center;
-margin-bottom: 20px;
+margin-bottom: 10px;
 padding-right:20px;
 position: relative;
 `
@@ -26,7 +26,7 @@ display:flex;
 margin-left: -10px;
 flex-direction:row;
 align-items:center;
-position: absolute;
+position: relative;
 `
 const Icon = styled.i`
     display: flex;

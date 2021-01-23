@@ -6,10 +6,9 @@ import GET_EVENTS_BY_DATE from "../../src/queries/get_events_by_date";
 import CalendarEvents from "../../src/components/events/CalendarEvents";
 import {TitleForComponent} from "../../src/components/titleForComponent/title";
 import Calendar from 'react-calendar';
-import React, {useEffect, useRef, useState} from 'react'
+import  {useEffect, useRef, useState} from 'react'
 import {useRouter} from 'next/router'
 import DatePicker from '../../src/components/datePicker/datePicker';
-import 'react-day-picker/lib/style.css';
 import GET_EVENTS_DATE from "../../src/queries/get_all_events_dete";
 import {useSelector} from "react-redux";
 import {device} from "../../src/components/deviceSizes/deviceSizes";
@@ -18,15 +17,9 @@ import StyledLoader from "../../src/components/loader/loader";
 import reduxClient from "../../src/apollo/reduxClient";
 import {SEARCH_EVENTS_BY_TITLE} from "../../src/queries/search_events_by_title";
 import {calendarLsi} from "../../src/Lsi/lsi";
+import {Container} from "../news/index";
 
-const Container = styled.div`
-width:80%;
-margin-left:10%;
- @media screen and ${device.tablet} {
-    width: 90%;
-    margin-left: 5%;
-  }
-`
+
 const Title = styled.div`
 width:100%;
 position:relative;
@@ -69,7 +62,7 @@ position: absolute;
 export const CalendarWrapper = styled.div`
 display: contents;
 `
-const Input = styled.div`
+export const Input = styled.div`
 position:absolute;
 right: 100px;
 width:350px;
@@ -77,15 +70,21 @@ width:350px;
  position:relative;
  margin-bottom:40px;
  right:unset;
-width:unset;
+width:100%;
   }
 `
 export const LoaderContainer = styled.div`
   width:100%;
   display:flex;
   justify-content:center;
+  text-align: center;
   position:relative;
-  margin:50px 0 50px 0;
+  padding:50px 0 50px 0;
+  h2 {
+  @media screen and ${device.mobileL} {
+  font-size:16px;
+  }
+  }
 `
 const Header = styled.div`
 display:flex;
@@ -172,6 +171,7 @@ export default function EventCalendar({locale,loading,event,menu,allDates,contac
                     <DatePicker getSelectedDay={selectedDay}
                                 tileDisabled={allDates}
                                 selectDate={new Date(value)}
+                                doScroll = {new Date(value).getDate()+new Date(value).getMonth()+1}
                     />
 
                 {
