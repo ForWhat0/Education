@@ -34,9 +34,25 @@ export  const Layout = ({showLinks,menu, header}) => {
     return (
         <>
 
+
+            <Modal/>
+
+                <div  ref={node}>
+                    {header}
+                    <Menu menu={menu}/>
+                </div>
             {
                 !visuallyImpairedMode && <BubbleBg/>
             }
+            {
+                showLinks && <RouterLink/>
+            }
+
+
+
+
+
+
 
         </>
     );
