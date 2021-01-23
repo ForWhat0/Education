@@ -22,7 +22,7 @@ import { NewsLsi} from "../../Lsi/lsi";
 import {useRouter} from "next/router";
 import {Container} from "../../../pages/news";
 import {RouterLink} from "../routerLink/routerLink";
-
+import { Modal } from "../modal/modal";
 import {BubbleBg} from "../bubbleBg/bubbleBg";
 
 
@@ -56,11 +56,10 @@ export  const Layout = ({showLinks,databaseId,contacts,menu,hideLeftComponent,ch
                 <title>{contacts?.titleSite}</title>
             </Head>
 
-
+       
 
                 <div  ref={node}>
                     {header}
-                    <Menu menu={menu}/>
                 </div>
             {
                 !visuallyImpairedMode && <BubbleBg/>
