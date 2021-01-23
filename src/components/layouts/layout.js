@@ -50,10 +50,80 @@ export  const Layout = ({showLinks,databaseId,contacts,menu,hideLeftComponent,ch
 
     return (
         <>
-            {showLinks && <RouterLink/>}
-            {!visuallyImpairedMode && <BubbleBg/>}
-            {children}
-</>)
+            <Head>
+                <link rel="icon" sizes="10x10" href={contacts?.iconSite?.sourceUrl} />
+                <meta name="description" content={contacts?.descrSite} />
+                <title>{contacts?.titleSite}</title>
+            </Head>
+
+          
+            {
+                !visuallyImpairedMode && <BubbleBg/>
+            }
+            {
+                showLinks && <RouterLink/>
+            }
+
+            {
+                inputNewsByTitle.length ?
+
+                    loading ?
+                        <LoaderContainer>
+                            <StyledLoader/>
+                        </LoaderContainer>
+                        :
+                        newsByTitle.length ?
+                            <Container>
+                                <LoaderContainer>
+                                    <h2 style={{margin: "0.67rem 0 0 0"}}>
+                                        {NewsLsi.result[locale]}
+                                    </h2>
+                                </LoaderContainer>
+                                <NewsWrapper posts={newsByTitle}/>
+                            </Container>
+                            :
+                            <div
+                                style={{textAlign:'center',margin:'50px 0 50px 0'}}
+                            >
+                                <h1>{NewsLsi.notExist[locale]}</h1>
+                                <h2
+                                    onClick={()=>dispatch(OnchangeInputSearchNews(''))}
+                                    style={{borderBottom:'1px solid',paddingBottom:'10px',display: 'inline',cursor:'pointer'}}
+                                >
+                                    {NewsLsi.cleanInput[locale]}
+                                </h2>
+                            </div>
+
+                    :
+                    children
+
+            }
+            {
+                showZNORegister ?
+                    <Element name="#RegisterZNO" className="element">
+                        <StyledRegisterZNO databaseId={databaseId} showZNORegister={showZNORegister} contacts={contacts} menu={menu}/>
+                    </Element>
+                    :
+                    !hideLeftComponent ?  <StyledLeftComment databaseId={databaseId} contacts={contacts} menu={menu}/> :
+                        <PageFooter contacts={contacts} menu={menu}/>
+            }
+
+
+
+            <style jsx global>{`
+        body {
+             color:${!visuallyImpairedModeWhiteTheme && 'white'};
+             background:${!visuallyImpairedModeWhiteTheme && '#1D1D1B'};
+        }
+        h1 {
+          font-size: ${fontSize === 'medium' ? '42px' : fontSize === 'large' ? '44px' : 'off'};
+        }
+         div,span,ul,li,a,label,p {
+          font-size: ${fontSize === 'medium' ? '17px' : fontSize === 'large' ? '18px' : 'off'};
+        }
+      `}</style>
+        </>
+    );
 };
 
 export default Layout;
