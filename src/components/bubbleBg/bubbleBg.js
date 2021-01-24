@@ -8,7 +8,7 @@ export const BubbleBg = ()=>{
     return(
         <div id="wrapper">
 
-            <div id="InnerWrapper">
+            <div id="innerWrapper">
             <div id="parallax-lvl-3">
                 <div id="b0-1" className="bubble size3 blue">&nbsp;</div>
                 <div id="b0-2" className="bubble size2 blue">&nbsp;</div>
