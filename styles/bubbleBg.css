@@ -14,7 +14,8 @@
 #parallax-lvl-3 {
     position: absolute;
     top: 0;
-    transition: top 1s linear;
+    margin-top:0;
+    transition: margin-top 1s ease-out;
     width: 100%;
     height: 100%;
     -webkit-animation: pulsate 5s ease-in-out infinite;
@@ -87,57 +88,57 @@
 }
 @-webkit-keyframes pulsate {
     0% {
-        margin: 0 0 0 0;
+        padding: 0 0 0 0;
     }
     50% {
-        margin: 3% 0 0 3%;
+        padding: 3% 0 0 3%;
     }
     100% {
-        margin: 0 0 0 0;
+        padding: 0 0 0 0;
     }
 }
 @-moz-keyframes pulsate {
     0% {
-        margin: 0 0 0 0;
+        padding: 0 0 0 0;
     }
     50% {
-        margin: 3% 0 0 3%;
+        padding: 3% 0 0 3%;
     }
     100% {
-        margin: 0 0 0 0;
+        padding: 0 0 0 0;
     }
 }
 @-ms-keyframes pulsate {
     0% {
-        margin: 0 0 0 0;
+        padding: 0 0 0 0;
     }
     50% {
-        margin: 3% 0 0 3%;
+        padding: 3% 0 0 3%;
     }
     100% {
-        margin: 0 0 0 0;
+        padding: 0 0 0 0;
     }
 }
 @-o-keyframes pulsate {
     0% {
-        margin: 0 0 0 0;
+        padding: 0 0 0 0;
     }
     50% {
-        margin: 3% 0 0 3%;
+        padding: 3% 0 0 3%;
     }
     100% {
-        margin: 0 0 0 0;
+        padding: 0 0 0 0;
     }
 }
 @keyframes pulsate {
     0% {
-        margin: 0 0 0 0;
+        padding: 0 0 0 0;
     }
     50% {
-        margin: 3% 0 0 3%;
+        padding: 3% 0 0 3%;
     }
     100% {
-        margin: 0 0 0 0;
+        padding: 0 0 0 0;
     }
 }
 
