@@ -1,16 +1,22 @@
 /*LAYOUT*/
 #wrapper {
     position: relative;
-    width:100vh;
+    max-width: 100%;
+    z-index: -1;
     margin: 0 auto;
-    z-index:-1;
 }
 
-#parallax-lvl-0, #parallax-lvl-1, #parallax-lvl-2, #parallax-lvl-3 {
+ #parallax-lvl-3 {
     position: absolute;
     top: 0;
-    z-index: -1;
+    transition: all 1s ease-out;
+    -webkit-animation: pulsate 5s ease-in-out infinite;
+    -moz-animation: pulsate 5s ease-in-out infinite;
+    -o-animation: pulsate 5s ease-in-out infinite;
+    animation: pulsate 5s ease-in-out infinite;
+     z-index: -1;
 }
+
 
 .bubble {
     border-radius: 100%;
