@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {device} from "../deviceSizes/deviceSizes";
 
 export const StyledMenu = styled.nav`
-  height: 100%;
+  height: 100vh;
   position: fixed;
   z-index: 5;
   top: 0;
@@ -55,14 +55,18 @@ export const SignIn = styled.div`
     align-items-center;
 `
 export const CircleBackground = styled.div`
-    height: 80%;
+    height: 50%;
     z-index: -1;
     background: rgba(0, 174, 239, 0.08);
-    width: 150%;
+    width: 50%;
     top: 10%;
-    right: 35%;
     border-radius: 50%;
     position: absolute;
+     @media screen and  ${device.mobileL} {
+     width: 100%;
+     left:-50%;
+      height: 80%;
+  }
 `
 export const ALink = styled.a`
 cursor:pointer;
