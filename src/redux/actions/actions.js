@@ -8,7 +8,7 @@ import {
     clickOnOffImages,
     clickVisuallyImpairedModeOn,
     clickVisuallyImpairedModeOff,
-    clickOnOffVisuallyImpairedModeWhiteTheme, changeFontSizeNormal, inputNewsByTitle, getNewsByTitle
+    clickOnOffVisuallyImpairedModeWhiteTheme, changeFontSizeNormal, inputNewsByTitle, getNewsByTitle, scrollToElement
 } from '../types/types'
 import GET_MOORE_NEWS from "../../queries/get_moore_news";
 import reduxClient from "../../apollo/reduxClient";
@@ -143,5 +143,10 @@ export function OnchangeInputSearchNews(string,locale) {
         return  dispatch=>{
             dispatch(ChangeInput(string))
         }
+    }
+}
+export const ScrollToElement = (string) =>{
+    return  dispatch=>{
+        dispatch({type:scrollToElement,payload:string})
     }
 }

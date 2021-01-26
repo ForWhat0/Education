@@ -20,7 +20,6 @@ import StyledLoader from "../loader/loader";
 import {LoaderContainer} from "../../../pages/calendar";
 import { NewsLsi} from "../../Lsi/lsi";
 import {useRouter} from "next/router";
-import {Container, NewsContainer} from "../../../pages/news";
 import {RouterLink} from "../routerLink/routerLink";
 import { Modal } from "../modal/modal";
 import {BubbleBg} from "../bubbleBg/bubbleBg";
@@ -30,7 +29,6 @@ import {BubbleBg} from "../bubbleBg/bubbleBg";
 export  const Layout = ({showLinks,databaseId,contacts,menu,hideLeftComponent,children , header,showZNORegister}) => {
     const {visuallyImpairedMode} = useSelector(state=>state.app)
     const router = useRouter()
-    const scrollingToElement = router.asPath.substring(1,2) === '#'
     const locale = router.locale
     const pathname = router.pathname
     const dispatch = useDispatch()
@@ -79,14 +77,14 @@ export  const Layout = ({showLinks,databaseId,contacts,menu,hideLeftComponent,ch
                           </LoaderContainer>
                       :
                           newsByTitle.length ?
-                              <NewsContainer style={{paddingBottom: "40px"}}>
+                              <div style={{width:'80%',marginLeft:'10%',paddingBottom: "40px"}}>
                                   <LoaderContainer>
                                       <h2 style={{margin: "0.67rem 0 0 0"}}>
                                           {NewsLsi.result[locale]}
                                       </h2>
                                   </LoaderContainer>
                                   <NewsWrapper posts={newsByTitle}/>
-                              </NewsContainer>
+                              </div>
                    :
                               <LoaderContainer>
                                   <h2>{NewsLsi.notExist[locale]}</h2>
@@ -120,9 +118,7 @@ export  const Layout = ({showLinks,databaseId,contacts,menu,hideLeftComponent,ch
              background:${!visuallyImpairedModeWhiteTheme && '#1D1D1B'};
         }
          #__next {
-              overflow: ${!scrollingToElement ? 'hidden' : 'unset'};
-              height:100%;
-              width:100%;
+              overflow: hidden;
             }   
         h1 {
           font-size: ${fontSize === 'medium' ? '42px' : fontSize === 'large' ? '44px' : 'off'};
