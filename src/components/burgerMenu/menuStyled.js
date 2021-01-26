@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {device} from "../deviceSizes/deviceSizes";
 
 export const StyledMenu = styled.nav`
   height: 100%;
@@ -9,14 +10,12 @@ export const StyledMenu = styled.nav`
   overflow-x: hidden;
   box-shadow: 0px 0px 20px rgba(29, 29, 27, 0.2);
    display: ${({ open }) => open ? 'block' : 'none'};
-    width: ${({ open }) => open ? '60%' : '0'};
+    width: ${({ open }) => open ? '100%' : '0'};
       transition: all 0.3s linear;
     padding:0;
   text-align: left;
     background-color: white;
-   @media screen and  (max-width: 500px){
-    width: ${({ open }) => open ? '100%' : '0'};
-  }
+
  
   a {
     font-size: 16px;
@@ -74,7 +73,7 @@ cursor:pointer;
 export const HeaderInner = styled.div`
 background: url(/diia_gradient.png);
 width:100%;
- height: 74px;
+ height: 73.2px;
     z-index: 6;
     position: fixed;
     background-size: cover;
@@ -87,9 +86,11 @@ export const Header = styled.div`
 display: flex;
     justify-content: space-between;
     align-items: center;
-   width:93.6%;
+   width:80%;
+   height:100%;
+  margin-left:10%;
+  @media screen and  ${device.mobileL} {
+     width:93.6%;
   margin-left:3.2%;
-     @media (max-width: 500px) {
-      height: 70px; 
-    }
+  }
 `
