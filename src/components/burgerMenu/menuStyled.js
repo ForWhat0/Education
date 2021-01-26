@@ -1,30 +1,25 @@
 import styled from 'styled-components';
-import {device} from "../deviceSizes/deviceSizes";
 
 export const StyledMenu = styled.nav`
-  display: flex;
+  height: 100%;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
   box-shadow: 0px 0px 20px rgba(29, 29, 27, 0.2);
-  flex-direction: column;
-  position:fixed;
-  height: 100vh;
-   right:0;
-   width:0;
+   display: ${({ open }) => open ? 'block' : 'none'};
+    width: ${({ open }) => open ? '60%' : '0'};
+      transition: all 0.3s linear;
     padding:0;
   text-align: left;
-     overflow-y: auto;
     background-color: white;
-    z-index: 5;
-  top: 0;
-      transition: width 0.3s linear;
-      @media screen and  (max-width: 900px){
-     width: ${({ open }) => open ? '60%' : '0'};
-  }
    @media screen and  (max-width: 500px){
     width: ${({ open }) => open ? '100%' : '0'};
   }
  
   a {
-    font-size: 20px;
+    font-size: 16px;
     padding: 10px 0;
     font-weight: normal;
     color: black;
@@ -61,7 +56,7 @@ export const SignIn = styled.div`
     align-items-center;
 `
 export const CircleBackground = styled.div`
-    height: 100%;
+    height: 80%;
     z-index: -1;
     background: rgba(0, 174, 239, 0.08);
     width: 150%;
@@ -89,12 +84,11 @@ width:100%;
     border-bottom: unset;
 `
 export const Header = styled.div`
-    width: 80%;
-    margin-left:10%;
-   @media screen and ${device.tablet}{
-  width:93.6%;
+display: flex;
+    justify-content: space-between;
+    align-items: center;
+   width:93.6%;
   margin-left:3.2%;
-  }
      @media (max-width: 500px) {
       height: 70px; 
     }
