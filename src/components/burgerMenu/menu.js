@@ -15,7 +15,6 @@ const {register,logIn} = headerLsi
 const Menu = ({menu}) => {
     const router = useRouter()
     const locale = router.locale
-    const {scrollToElement} = useSelector(state=>state.app)
     const {menuBurgerIsOpen} = useSelector(state=>state.app)
     const dispatch = useDispatch()
     const handlerCloseMenu=()=>{
@@ -71,7 +70,7 @@ const Menu = ({menu}) => {
                                 el.path.charAt(0) === '#' ?
                                     <Link key={i+el.title}  scroll={false} href="/" >
                                         <Li onClick={()=>scroll(el.path)}>
-                                            <ALink activeLink={scrollToElement === el.path && activeLink}>
+                                            <ALink>
                                                 {el.title}
                                             </ALink>
                                         </Li>
